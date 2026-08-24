@@ -1,12 +1,13 @@
 import os
 import csv
+import time
 import requests
 import json
 import logging
 from datetime import datetime
 
 logging.basicConfig(
-    filename='data_extraction.log',
+    filename='eraktkosh_stock_log.log',
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s'
 )
@@ -15,7 +16,10 @@ MASTER_URL = "https://eraktkosh.mohfw.gov.in/eraktkoshPortal/eraktkosh/master/al
 STOCK_URL = "https://eraktkosh.mohfw.gov.in/eraktkoshPortal/eraktkosh/blood-availability"
 
 COLLECTION_CONFIG = {
-    "states": ["Andhra Pradesh"] 
+    "states": ["Andhra Pradesh"],
+    "districts" : ["Alluri Sitharama Raju", "East Godavari"],
+    "blood_groups": ['A+Ve', 'A-Ve', 'B+Ve', 'B-Ve'],
+    "components": ['Packed Red Blood Cells', '']
 }
 
 
@@ -23,7 +27,7 @@ def fetch_master_all():
     headers = {
         'Content-Type': 'application/json'
     }
-    response = requests.post(MASTER_URL, json={"hospitalCode": 100}, headers=headers)
+    response = requests.post(MASTER_URL, json={"hospitalCode": 100}, headers=headers, timeout=15)
     response.raise_for_status()
     payload = response.json()
     
@@ -71,7 +75,7 @@ def fetch_blood_data(state_code, district_code, blood_group_code, component_code
         "componentId": component_code,
         "bloodGroupId": blood_group_code,
     }
-    response = requests.get(STOCK_URL, params=params)
+    response = requests.get(STOCK_URL, params=params, timeout=15)
     response.raise_for_status()
     entries = response.json()
     fetched_at = datetime.now().isoformat(timespec="seconds")
@@ -102,12 +106,21 @@ def run_collection(output_file="blood_data.csv"):
     """
     Main entry point for running the blood availability data collection.
     """
+    master_file = "master_data.json"
     try:
-        state_dict, district_dict, blood_dict, component_dict = load_master_data()
-        logging.info("Loaded master data from cache.")
+        if os.path.exists(master_file):
+            file_age_days = (time.time() - os.path.getmtime(master_file)) / (60 * 60 * 24)
+            if file_age_days > 7:
+                logging.info(f"Master data is {file_age_days:.1f} days old. Refreshing...")
+                state_dict, district_dict, blood_dict, component_dict = save_master_data(master_file)
+            else:
+                state_dict, district_dict, blood_dict, component_dict = load_master_data(master_file)
+                logging.info("Loaded master data from cache.")
+        else:
+            raise FileNotFoundError
     except FileNotFoundError:
         logging.info("Master data not found. Fetching and saving...")
-        state_dict, district_dict, blood_dict, component_dict = save_master_data()
+        state_dict, district_dict, blood_dict, component_dict = save_master_data(master_file)
 
     headers = [
         "fetched_at", "state_code", "district_code", "blood_group", 
@@ -124,10 +137,10 @@ def run_collection(output_file="blood_data.csv"):
 
         total_fetched = 0
         
-        # Default to all if omitted from config
         states_to_fetch = COLLECTION_CONFIG.get("states") or list(state_dict.keys())
         bgs_to_fetch = COLLECTION_CONFIG.get("blood_groups") or list(blood_dict.keys())
         comps_to_fetch = COLLECTION_CONFIG.get("components") or list(component_dict.keys())
+        districts_to_fetch = COLLECTION_CONFIG.get("districts")
         
         for state_name in states_to_fetch:
             state_code = state_dict.get(state_name)
@@ -137,6 +150,8 @@ def run_collection(output_file="blood_data.csv"):
                 
             districts = district_dict.get(state_code, {})
             for district_name, district_code in districts.items():
+                if districts_to_fetch and district_name not in districts_to_fetch:
+                    continue
                 for bg_name in bgs_to_fetch:
                     bg_code = blood_dict.get(bg_name)
                     if not bg_code: continue
@@ -150,14 +165,13 @@ def run_collection(output_file="blood_data.csv"):
                             results = fetch_blood_data(state_code, district_code, bg_code, comp_code, comp_name)
                             if results:
                                 writer.writerows(results)
-                                csvfile.flush() # Write immediately to disk
+                                csvfile.flush() 
                                 total_fetched += len(results)
                                 logging.info(f"Saved {len(results)} rows.")
                             else:
                                 logging.info("No data found.")
                         except Exception as e:
-                            logging.error(f"Failed to fetch {district_name}, {bg_name}, {comp_name}: {e}")
-                            
+                            logging.error(f"Failed to fetch {state_name} - {district_name} | {bg_name} | {comp_name}: {e}")
     logging.info(f"Collection complete. Fetched {total_fetched} total records to {output_file}.")
 
 
