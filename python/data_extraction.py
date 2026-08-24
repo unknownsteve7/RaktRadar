@@ -31,7 +31,6 @@ def fetch_master_all():
 
 
 def save_master_data(path="master_data.json"):
-    """Cache master data to disk so you don't refetch it on every collection run."""
     state_dict, district_dict, blood_dict, component_dict = fetch_master_all()
     with open(path, "w", encoding="utf-8") as f:
         json.dump(
