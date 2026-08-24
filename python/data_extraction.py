@@ -2,15 +2,20 @@ import os
 import csv
 import requests
 import json
+import logging
 from datetime import datetime
+
+logging.basicConfig(
+    filename='data_extraction.log',
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s'
+)
 
 MASTER_URL = "https://eraktkosh.mohfw.gov.in/eraktkoshPortal/eraktkosh/master/all"
 STOCK_URL = "https://eraktkosh.mohfw.gov.in/eraktkoshPortal/eraktkosh/blood-availability"
 
 COLLECTION_CONFIG = {
-    "states": ["Andhra Pradesh"],
-    "blood_groups": ["B+Ve"], 
-    "components": ["Whole Blood"] 
+    "states": ["Andhra Pradesh"] 
 }
 
 
@@ -99,9 +104,9 @@ def run_collection(output_file="blood_data.csv"):
     """
     try:
         state_dict, district_dict, blood_dict, component_dict = load_master_data()
-        print("Loaded master data from cache.")
+        logging.info("Loaded master data from cache.")
     except FileNotFoundError:
-        print("Master data not found. Fetching and saving...")
+        logging.info("Master data not found. Fetching and saving...")
         state_dict, district_dict, blood_dict, component_dict = save_master_data()
 
     headers = [
@@ -118,33 +123,42 @@ def run_collection(output_file="blood_data.csv"):
             writer.writeheader()
 
         total_fetched = 0
-        for state_name in COLLECTION_CONFIG.get("states", []):
+        
+        # Default to all if omitted from config
+        states_to_fetch = COLLECTION_CONFIG.get("states") or list(state_dict.keys())
+        bgs_to_fetch = COLLECTION_CONFIG.get("blood_groups") or list(blood_dict.keys())
+        comps_to_fetch = COLLECTION_CONFIG.get("components") or list(component_dict.keys())
+        
+        for state_name in states_to_fetch:
             state_code = state_dict.get(state_name)
             if not state_code:
-                print(f"Warning: State '{state_name}' not found.")
+                logging.warning(f"State '{state_name}' not found.")
                 continue
                 
             districts = district_dict.get(state_code, {})
             for district_name, district_code in districts.items():
-                for bg_name in COLLECTION_CONFIG.get("blood_groups", []):
+                for bg_name in bgs_to_fetch:
                     bg_code = blood_dict.get(bg_name)
                     if not bg_code: continue
                         
-                    for comp_name in COLLECTION_CONFIG.get("components", []):
+                    for comp_name in comps_to_fetch:
                         comp_code = component_dict.get(comp_name)
                         if not comp_code: continue
                             
-                        print(f"Fetching: {state_name} - {district_name} | {bg_name} | {comp_name}")
+                        logging.info(f"Fetching: {state_name} - {district_name} | {bg_name} | {comp_name}")
                         try:
                             results = fetch_blood_data(state_code, district_code, bg_code, comp_code, comp_name)
                             if results:
                                 writer.writerows(results)
                                 csvfile.flush() # Write immediately to disk
                                 total_fetched += len(results)
+                                logging.info(f"Saved {len(results)} rows.")
+                            else:
+                                logging.info("No data found.")
                         except Exception as e:
-                            print(f"Failed to fetch {district_name}, {bg_name}, {comp_name}: {e}")
+                            logging.error(f"Failed to fetch {district_name}, {bg_name}, {comp_name}: {e}")
                             
-    print(f"Collection complete. Fetched {total_fetched} total records to {output_file}.")
+    logging.info(f"Collection complete. Fetched {total_fetched} total records to {output_file}.")
 
 
 if __name__ == "__main__":
