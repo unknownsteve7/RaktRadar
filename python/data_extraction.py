@@ -1,9 +1,17 @@
+import os
+import csv
 import requests
 import json
 from datetime import datetime
 
 MASTER_URL = "https://eraktkosh.mohfw.gov.in/eraktkoshPortal/eraktkosh/master/all"
 STOCK_URL = "https://eraktkosh.mohfw.gov.in/eraktkoshPortal/eraktkosh/blood-availability"
+
+COLLECTION_CONFIG = {
+    "states": ["Andhra Pradesh"],
+    "blood_groups": ["B+Ve"], 
+    "components": ["Whole Blood"] 
+}
 
 
 def fetch_master_all():
@@ -85,7 +93,7 @@ def fetch_blood_data(state_code, district_code, blood_group_code, component_code
     return cleaned
 
 
-def run_collection():
+def run_collection(output_file="blood_data.csv"):
     """
     Main entry point for running the blood availability data collection.
     """
@@ -96,8 +104,47 @@ def run_collection():
         print("Master data not found. Fetching and saving...")
         state_dict, district_dict, blood_dict, component_dict = save_master_data()
 
+    headers = [
+        "fetched_at", "state_code", "district_code", "blood_group", 
+        "blood_component", "blood_bank", "hospital_code", "address", 
+        "contact", "category", "available", "not_available", 
+        "last_updated", "bank_type"
+    ]
     
-    print("Ready to run collection pipeline.")
+    file_exists = os.path.isfile(output_file)
+    with open(output_file, "a", newline="", encoding="utf-8") as csvfile:
+        writer = csv.DictWriter(csvfile, fieldnames=headers)
+        if not file_exists:
+            writer.writeheader()
+
+        total_fetched = 0
+        for state_name in COLLECTION_CONFIG.get("states", []):
+            state_code = state_dict.get(state_name)
+            if not state_code:
+                print(f"Warning: State '{state_name}' not found.")
+                continue
+                
+            districts = district_dict.get(state_code, {})
+            for district_name, district_code in districts.items():
+                for bg_name in COLLECTION_CONFIG.get("blood_groups", []):
+                    bg_code = blood_dict.get(bg_name)
+                    if not bg_code: continue
+                        
+                    for comp_name in COLLECTION_CONFIG.get("components", []):
+                        comp_code = component_dict.get(comp_name)
+                        if not comp_code: continue
+                            
+                        print(f"Fetching: {state_name} - {district_name} | {bg_name} | {comp_name}")
+                        try:
+                            results = fetch_blood_data(state_code, district_code, bg_code, comp_code, comp_name)
+                            if results:
+                                writer.writerows(results)
+                                csvfile.flush() # Write immediately to disk
+                                total_fetched += len(results)
+                        except Exception as e:
+                            print(f"Failed to fetch {district_name}, {bg_name}, {comp_name}: {e}")
+                            
+    print(f"Collection complete. Fetched {total_fetched} total records to {output_file}.")
 
 
 if __name__ == "__main__":
