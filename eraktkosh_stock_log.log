@@ -394,3 +394,21 @@
 2026-09-12 04:54:10,691 - INFO - Fetching: Andhra Pradesh - East Godavari | B-Ve | Packed Red Blood Cells
 2026-09-12 04:54:11,730 - INFO - Saved 16 rows.
 2026-09-12 04:54:11,730 - INFO - Collection complete. Fetched 84 total records to blood_data.csv.
+2026-09-13 05:14:37,802 - INFO - Loaded master data from cache.
+2026-09-13 05:14:37,802 - INFO - Fetching: Andhra Pradesh - Alluri Sitharama Raju | A+Ve | Packed Red Blood Cells
+2026-09-13 05:14:39,366 - INFO - Saved 5 rows.
+2026-09-13 05:14:39,366 - INFO - Fetching: Andhra Pradesh - Alluri Sitharama Raju | A-Ve | Packed Red Blood Cells
+2026-09-13 05:14:40,703 - INFO - Saved 5 rows.
+2026-09-13 05:14:40,703 - INFO - Fetching: Andhra Pradesh - Alluri Sitharama Raju | B+Ve | Packed Red Blood Cells
+2026-09-13 05:14:42,262 - INFO - Saved 5 rows.
+2026-09-13 05:14:42,263 - INFO - Fetching: Andhra Pradesh - Alluri Sitharama Raju | B-Ve | Packed Red Blood Cells
+2026-09-13 05:14:43,882 - INFO - Saved 5 rows.
+2026-09-13 05:14:43,882 - INFO - Fetching: Andhra Pradesh - East Godavari | A+Ve | Packed Red Blood Cells
+2026-09-13 05:14:45,444 - INFO - Saved 16 rows.
+2026-09-13 05:14:45,444 - INFO - Fetching: Andhra Pradesh - East Godavari | A-Ve | Packed Red Blood Cells
+2026-09-13 05:14:46,760 - INFO - Saved 16 rows.
+2026-09-13 05:14:46,760 - INFO - Fetching: Andhra Pradesh - East Godavari | B+Ve | Packed Red Blood Cells
+2026-09-13 05:14:48,319 - INFO - Saved 16 rows.
+2026-09-13 05:14:48,319 - INFO - Fetching: Andhra Pradesh - East Godavari | B-Ve | Packed Red Blood Cells
+2026-09-13 05:14:49,935 - INFO - Saved 16 rows.
+2026-09-13 05:14:49,935 - INFO - Collection complete. Fetched 84 total records to blood_data.csv.
