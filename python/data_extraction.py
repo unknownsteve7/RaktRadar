@@ -17,9 +17,9 @@ STOCK_URL = "https://eraktkosh.mohfw.gov.in/eraktkoshPortal/eraktkosh/blood-avai
 
 COLLECTION_CONFIG = {
     "states": ["Andhra Pradesh"],
-    "districts" : ["Alluri Sitharama Raju", "East Godavari"],
-    "blood_groups": ['A+Ve', 'A-Ve', 'B+Ve', 'B-Ve'],
-    "components": ['Packed Red Blood Cells', '']
+    "districts" : ["Alluri Sitharama Raju", "East Godavari", "Krishna", "Kurnool", "Prakasam", "Srikakulam", "Vizianagaram", "Vishakhapatnam", "West Godavari", "Y.S.R. Kadapa"],
+    "blood_groups": ['A+Ve', 'A-Ve', 'B+Ve', 'B-Ve', 'O+Ve', 'O-Ve', 'AB+Ve', 'AB-Ve'],
+    "components": ['Packed Red Blood Cells', 'Fresh Frozen Plasma','Platelet Rich Plasma']
 }
 
 
