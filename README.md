@@ -24,7 +24,7 @@ Mid-development, the live portal turned out to have two versions running in para
 - [x] Reverse-engineer and verify the stock endpoint (`blood-availability`)
 - [x] Build `run_collection.py` — the full state × district × blood group × component loop with append-per-call persistence, logging, and failure isolation
 - [x] Deploy as a scheduled GitHub Actions workflow (daily; independent of any local machine)
-- [ ] Accumulate several weeks of real history
+- [x] Accumulate several weeks of real history
 - [ ] Descriptive analysis — which regions/blood groups run chronically short vs. surplus
 - [ ] Diagnostic analysis — weekday effects, festival correlation, handling stale/unreported entries
 - [ ] Stretch goal — early-warning/trend flag, if data quality supports it
