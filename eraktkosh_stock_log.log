@@ -888,3 +888,389 @@
 2026-09-19 04:57:08,917 - INFO - Fetching: Andhra Pradesh - West Godavari | AB-Ve | Platelet Rich Plasma
 2026-09-19 04:57:10,058 - INFO - No data found.
 2026-09-19 04:57:10,058 - INFO - Collection complete. Fetched 2048 total records to blood_data.csv.
+2026-09-20 05:15:33,089 - INFO - Loaded master data from cache.
+2026-09-20 05:15:33,089 - INFO - Fetching: Andhra Pradesh - Alluri Sitharama Raju | A+Ve | Packed Red Blood Cells
+2026-09-20 05:15:34,233 - INFO - Saved 5 rows.
+2026-09-20 05:15:34,233 - INFO - Fetching: Andhra Pradesh - Alluri Sitharama Raju | A+Ve | Fresh Frozen Plasma
+2026-09-20 05:15:35,355 - INFO - Saved 5 rows.
+2026-09-20 05:15:35,355 - INFO - Fetching: Andhra Pradesh - Alluri Sitharama Raju | A+Ve | Platelet Rich Plasma
+2026-09-20 05:15:36,923 - INFO - No data found.
+2026-09-20 05:15:36,924 - INFO - Fetching: Andhra Pradesh - Alluri Sitharama Raju | A-Ve | Packed Red Blood Cells
+2026-09-20 05:15:38,058 - INFO - Saved 5 rows.
+2026-09-20 05:15:38,058 - INFO - Fetching: Andhra Pradesh - Alluri Sitharama Raju | A-Ve | Fresh Frozen Plasma
+2026-09-20 05:15:39,396 - INFO - Saved 5 rows.
+2026-09-20 05:15:39,396 - INFO - Fetching: Andhra Pradesh - Alluri Sitharama Raju | A-Ve | Platelet Rich Plasma
+2026-09-20 05:15:40,258 - INFO - No data found.
+2026-09-20 05:15:40,258 - INFO - Fetching: Andhra Pradesh - Alluri Sitharama Raju | B+Ve | Packed Red Blood Cells
+2026-09-20 05:15:41,382 - INFO - Saved 5 rows.
+2026-09-20 05:15:41,382 - INFO - Fetching: Andhra Pradesh - Alluri Sitharama Raju | B+Ve | Fresh Frozen Plasma
+2026-09-20 05:15:42,734 - INFO - Saved 5 rows.
+2026-09-20 05:15:42,734 - INFO - Fetching: Andhra Pradesh - Alluri Sitharama Raju | B+Ve | Platelet Rich Plasma
+2026-09-20 05:15:43,634 - INFO - No data found.
+2026-09-20 05:15:43,634 - INFO - Fetching: Andhra Pradesh - Alluri Sitharama Raju | B-Ve | Packed Red Blood Cells
+2026-09-20 05:15:44,986 - INFO - Saved 5 rows.
+2026-09-20 05:15:44,986 - INFO - Fetching: Andhra Pradesh - Alluri Sitharama Raju | B-Ve | Fresh Frozen Plasma
+2026-09-20 05:15:46,133 - INFO - Saved 5 rows.
+2026-09-20 05:15:46,133 - INFO - Fetching: Andhra Pradesh - Alluri Sitharama Raju | B-Ve | Platelet Rich Plasma
+2026-09-20 05:15:47,484 - INFO - No data found.
+2026-09-20 05:15:47,484 - INFO - Fetching: Andhra Pradesh - Alluri Sitharama Raju | O+Ve | Packed Red Blood Cells
+2026-09-20 05:15:48,616 - INFO - Saved 5 rows.
+2026-09-20 05:15:48,616 - INFO - Fetching: Andhra Pradesh - Alluri Sitharama Raju | O+Ve | Fresh Frozen Plasma
+2026-09-20 05:15:49,895 - INFO - Saved 5 rows.
+2026-09-20 05:15:49,895 - INFO - Fetching: Andhra Pradesh - Alluri Sitharama Raju | O+Ve | Platelet Rich Plasma
+2026-09-20 05:15:50,763 - INFO - No data found.
+2026-09-20 05:15:50,763 - INFO - Fetching: Andhra Pradesh - Alluri Sitharama Raju | O-Ve | Packed Red Blood Cells
+2026-09-20 05:15:51,905 - INFO - Saved 5 rows.
+2026-09-20 05:15:51,905 - INFO - Fetching: Andhra Pradesh - Alluri Sitharama Raju | O-Ve | Fresh Frozen Plasma
+2026-09-20 05:15:53,037 - INFO - Saved 5 rows.
+2026-09-20 05:15:53,037 - INFO - Fetching: Andhra Pradesh - Alluri Sitharama Raju | O-Ve | Platelet Rich Plasma
+2026-09-20 05:15:53,885 - INFO - No data found.
+2026-09-20 05:15:53,885 - INFO - Fetching: Andhra Pradesh - Alluri Sitharama Raju | AB+Ve | Packed Red Blood Cells
+2026-09-20 05:15:54,758 - INFO - Saved 5 rows.
+2026-09-20 05:15:54,758 - INFO - Fetching: Andhra Pradesh - Alluri Sitharama Raju | AB+Ve | Fresh Frozen Plasma
+2026-09-20 05:15:55,637 - INFO - Saved 5 rows.
+2026-09-20 05:15:55,637 - INFO - Fetching: Andhra Pradesh - Alluri Sitharama Raju | AB+Ve | Platelet Rich Plasma
+2026-09-20 05:15:56,737 - INFO - No data found.
+2026-09-20 05:15:56,737 - INFO - Fetching: Andhra Pradesh - Alluri Sitharama Raju | AB-Ve | Packed Red Blood Cells
+2026-09-20 05:15:57,586 - INFO - Saved 5 rows.
+2026-09-20 05:15:57,586 - INFO - Fetching: Andhra Pradesh - Alluri Sitharama Raju | AB-Ve | Fresh Frozen Plasma
+2026-09-20 05:15:58,735 - INFO - Saved 5 rows.
+2026-09-20 05:15:58,736 - INFO - Fetching: Andhra Pradesh - Alluri Sitharama Raju | AB-Ve | Platelet Rich Plasma
+2026-09-20 05:15:59,602 - INFO - No data found.
+2026-09-20 05:15:59,602 - INFO - Fetching: Andhra Pradesh - East Godavari | A+Ve | Packed Red Blood Cells
+2026-09-20 05:16:00,471 - INFO - Saved 16 rows.
+2026-09-20 05:16:00,471 - INFO - Fetching: Andhra Pradesh - East Godavari | A+Ve | Fresh Frozen Plasma
+2026-09-20 05:16:01,351 - INFO - Saved 16 rows.
+2026-09-20 05:16:01,351 - INFO - Fetching: Andhra Pradesh - East Godavari | A+Ve | Platelet Rich Plasma
+2026-09-20 05:16:02,215 - INFO - No data found.
+2026-09-20 05:16:02,215 - INFO - Fetching: Andhra Pradesh - East Godavari | A-Ve | Packed Red Blood Cells
+2026-09-20 05:16:03,320 - INFO - Saved 16 rows.
+2026-09-20 05:16:03,321 - INFO - Fetching: Andhra Pradesh - East Godavari | A-Ve | Fresh Frozen Plasma
+2026-09-20 05:16:04,185 - INFO - Saved 16 rows.
+2026-09-20 05:16:04,185 - INFO - Fetching: Andhra Pradesh - East Godavari | A-Ve | Platelet Rich Plasma
+2026-09-20 05:16:05,058 - INFO - No data found.
+2026-09-20 05:16:05,058 - INFO - Fetching: Andhra Pradesh - East Godavari | B+Ve | Packed Red Blood Cells
+2026-09-20 05:16:05,920 - INFO - Saved 16 rows.
+2026-09-20 05:16:05,920 - INFO - Fetching: Andhra Pradesh - East Godavari | B+Ve | Fresh Frozen Plasma
+2026-09-20 05:16:06,794 - INFO - Saved 16 rows.
+2026-09-20 05:16:06,794 - INFO - Fetching: Andhra Pradesh - East Godavari | B+Ve | Platelet Rich Plasma
+2026-09-20 05:16:07,910 - INFO - No data found.
+2026-09-20 05:16:07,910 - INFO - Fetching: Andhra Pradesh - East Godavari | B-Ve | Packed Red Blood Cells
+2026-09-20 05:16:09,017 - INFO - Saved 16 rows.
+2026-09-20 05:16:09,017 - INFO - Fetching: Andhra Pradesh - East Godavari | B-Ve | Fresh Frozen Plasma
+2026-09-20 05:16:09,881 - INFO - Saved 16 rows.
+2026-09-20 05:16:09,881 - INFO - Fetching: Andhra Pradesh - East Godavari | B-Ve | Platelet Rich Plasma
+2026-09-20 05:16:10,741 - INFO - No data found.
+2026-09-20 05:16:10,742 - INFO - Fetching: Andhra Pradesh - East Godavari | O+Ve | Packed Red Blood Cells
+2026-09-20 05:16:11,598 - INFO - Saved 16 rows.
+2026-09-20 05:16:11,598 - INFO - Fetching: Andhra Pradesh - East Godavari | O+Ve | Fresh Frozen Plasma
+2026-09-20 05:16:13,144 - INFO - Saved 16 rows.
+2026-09-20 05:16:13,144 - INFO - Fetching: Andhra Pradesh - East Godavari | O+Ve | Platelet Rich Plasma
+2026-09-20 05:16:14,216 - INFO - No data found.
+2026-09-20 05:16:14,216 - INFO - Fetching: Andhra Pradesh - East Godavari | O-Ve | Packed Red Blood Cells
+2026-09-20 05:16:15,088 - INFO - Saved 16 rows.
+2026-09-20 05:16:15,088 - INFO - Fetching: Andhra Pradesh - East Godavari | O-Ve | Fresh Frozen Plasma
+2026-09-20 05:16:16,003 - INFO - Saved 16 rows.
+2026-09-20 05:16:16,003 - INFO - Fetching: Andhra Pradesh - East Godavari | O-Ve | Platelet Rich Plasma
+2026-09-20 05:16:16,847 - INFO - No data found.
+2026-09-20 05:16:16,848 - INFO - Fetching: Andhra Pradesh - East Godavari | AB+Ve | Packed Red Blood Cells
+2026-09-20 05:16:17,724 - INFO - Saved 16 rows.
+2026-09-20 05:16:17,724 - INFO - Fetching: Andhra Pradesh - East Godavari | AB+Ve | Fresh Frozen Plasma
+2026-09-20 05:16:18,856 - INFO - Saved 16 rows.
+2026-09-20 05:16:18,856 - INFO - Fetching: Andhra Pradesh - East Godavari | AB+Ve | Platelet Rich Plasma
+2026-09-20 05:16:19,727 - INFO - No data found.
+2026-09-20 05:16:19,727 - INFO - Fetching: Andhra Pradesh - East Godavari | AB-Ve | Packed Red Blood Cells
+2026-09-20 05:16:20,600 - INFO - Saved 16 rows.
+2026-09-20 05:16:20,600 - INFO - Fetching: Andhra Pradesh - East Godavari | AB-Ve | Fresh Frozen Plasma
+2026-09-20 05:16:21,518 - INFO - Saved 16 rows.
+2026-09-20 05:16:21,518 - INFO - Fetching: Andhra Pradesh - East Godavari | AB-Ve | Platelet Rich Plasma
+2026-09-20 05:16:22,368 - INFO - No data found.
+2026-09-20 05:16:22,368 - INFO - Fetching: Andhra Pradesh - Krishna | A+Ve | Packed Red Blood Cells
+2026-09-20 05:16:23,265 - INFO - Saved 14 rows.
+2026-09-20 05:16:23,265 - INFO - Fetching: Andhra Pradesh - Krishna | A+Ve | Fresh Frozen Plasma
+2026-09-20 05:16:24,154 - INFO - Saved 14 rows.
+2026-09-20 05:16:24,154 - INFO - Fetching: Andhra Pradesh - Krishna | A+Ve | Platelet Rich Plasma
+2026-09-20 05:16:25,020 - INFO - No data found.
+2026-09-20 05:16:25,021 - INFO - Fetching: Andhra Pradesh - Krishna | A-Ve | Packed Red Blood Cells
+2026-09-20 05:16:26,131 - INFO - Saved 14 rows.
+2026-09-20 05:16:26,131 - INFO - Fetching: Andhra Pradesh - Krishna | A-Ve | Fresh Frozen Plasma
+2026-09-20 05:16:27,046 - INFO - Saved 14 rows.
+2026-09-20 05:16:27,046 - INFO - Fetching: Andhra Pradesh - Krishna | A-Ve | Platelet Rich Plasma
+2026-09-20 05:16:27,898 - INFO - No data found.
+2026-09-20 05:16:27,898 - INFO - Fetching: Andhra Pradesh - Krishna | B+Ve | Packed Red Blood Cells
+2026-09-20 05:16:28,771 - INFO - Saved 14 rows.
+2026-09-20 05:16:28,772 - INFO - Fetching: Andhra Pradesh - Krishna | B+Ve | Fresh Frozen Plasma
+2026-09-20 05:16:30,168 - INFO - Saved 14 rows.
+2026-09-20 05:16:30,169 - INFO - Fetching: Andhra Pradesh - Krishna | B+Ve | Platelet Rich Plasma
+2026-09-20 05:16:31,037 - INFO - No data found.
+2026-09-20 05:16:31,037 - INFO - Fetching: Andhra Pradesh - Krishna | B-Ve | Packed Red Blood Cells
+2026-09-20 05:16:31,889 - INFO - Saved 14 rows.
+2026-09-20 05:16:31,889 - INFO - Fetching: Andhra Pradesh - Krishna | B-Ve | Fresh Frozen Plasma
+2026-09-20 05:16:32,763 - INFO - Saved 14 rows.
+2026-09-20 05:16:32,763 - INFO - Fetching: Andhra Pradesh - Krishna | B-Ve | Platelet Rich Plasma
+2026-09-20 05:16:33,636 - INFO - No data found.
+2026-09-20 05:16:33,636 - INFO - Fetching: Andhra Pradesh - Krishna | O+Ve | Packed Red Blood Cells
+2026-09-20 05:16:34,493 - INFO - Saved 14 rows.
+2026-09-20 05:16:34,493 - INFO - Fetching: Andhra Pradesh - Krishna | O+Ve | Fresh Frozen Plasma
+2026-09-20 05:16:35,350 - INFO - Saved 14 rows.
+2026-09-20 05:16:35,350 - INFO - Fetching: Andhra Pradesh - Krishna | O+Ve | Platelet Rich Plasma
+2026-09-20 05:16:36,225 - INFO - No data found.
+2026-09-20 05:16:36,225 - INFO - Fetching: Andhra Pradesh - Krishna | O-Ve | Packed Red Blood Cells
+2026-09-20 05:16:37,082 - INFO - Saved 14 rows.
+2026-09-20 05:16:37,082 - INFO - Fetching: Andhra Pradesh - Krishna | O-Ve | Fresh Frozen Plasma
+2026-09-20 05:16:37,948 - INFO - Saved 14 rows.
+2026-09-20 05:16:37,948 - INFO - Fetching: Andhra Pradesh - Krishna | O-Ve | Platelet Rich Plasma
+2026-09-20 05:16:38,813 - INFO - No data found.
+2026-09-20 05:16:38,814 - INFO - Fetching: Andhra Pradesh - Krishna | AB+Ve | Packed Red Blood Cells
+2026-09-20 05:16:39,688 - INFO - Saved 14 rows.
+2026-09-20 05:16:39,689 - INFO - Fetching: Andhra Pradesh - Krishna | AB+Ve | Fresh Frozen Plasma
+2026-09-20 05:16:40,564 - INFO - Saved 14 rows.
+2026-09-20 05:16:40,564 - INFO - Fetching: Andhra Pradesh - Krishna | AB+Ve | Platelet Rich Plasma
+2026-09-20 05:16:41,431 - INFO - No data found.
+2026-09-20 05:16:41,431 - INFO - Fetching: Andhra Pradesh - Krishna | AB-Ve | Packed Red Blood Cells
+2026-09-20 05:16:42,325 - INFO - Saved 14 rows.
+2026-09-20 05:16:42,325 - INFO - Fetching: Andhra Pradesh - Krishna | AB-Ve | Fresh Frozen Plasma
+2026-09-20 05:16:43,678 - INFO - Saved 14 rows.
+2026-09-20 05:16:43,678 - INFO - Fetching: Andhra Pradesh - Krishna | AB-Ve | Platelet Rich Plasma
+2026-09-20 05:16:44,585 - INFO - No data found.
+2026-09-20 05:16:44,586 - INFO - Fetching: Andhra Pradesh - Kurnool | A+Ve | Packed Red Blood Cells
+2026-09-20 05:16:45,498 - INFO - Saved 22 rows.
+2026-09-20 05:16:45,498 - INFO - Fetching: Andhra Pradesh - Kurnool | A+Ve | Fresh Frozen Plasma
+2026-09-20 05:16:46,356 - INFO - Saved 22 rows.
+2026-09-20 05:16:46,356 - INFO - Fetching: Andhra Pradesh - Kurnool | A+Ve | Platelet Rich Plasma
+2026-09-20 05:16:47,205 - INFO - No data found.
+2026-09-20 05:16:47,206 - INFO - Fetching: Andhra Pradesh - Kurnool | A-Ve | Packed Red Blood Cells
+2026-09-20 05:16:48,093 - INFO - Saved 22 rows.
+2026-09-20 05:16:48,094 - INFO - Fetching: Andhra Pradesh - Kurnool | A-Ve | Fresh Frozen Plasma
+2026-09-20 05:16:48,968 - INFO - Saved 22 rows.
+2026-09-20 05:16:48,968 - INFO - Fetching: Andhra Pradesh - Kurnool | A-Ve | Platelet Rich Plasma
+2026-09-20 05:16:49,852 - INFO - No data found.
+2026-09-20 05:16:49,853 - INFO - Fetching: Andhra Pradesh - Kurnool | B+Ve | Packed Red Blood Cells
+2026-09-20 05:16:50,732 - INFO - Saved 22 rows.
+2026-09-20 05:16:50,732 - INFO - Fetching: Andhra Pradesh - Kurnool | B+Ve | Fresh Frozen Plasma
+2026-09-20 05:16:51,656 - INFO - Saved 22 rows.
+2026-09-20 05:16:51,656 - INFO - Fetching: Andhra Pradesh - Kurnool | B+Ve | Platelet Rich Plasma
+2026-09-20 05:16:52,529 - INFO - No data found.
+2026-09-20 05:16:52,530 - INFO - Fetching: Andhra Pradesh - Kurnool | B-Ve | Packed Red Blood Cells
+2026-09-20 05:16:53,401 - INFO - Saved 22 rows.
+2026-09-20 05:16:53,401 - INFO - Fetching: Andhra Pradesh - Kurnool | B-Ve | Fresh Frozen Plasma
+2026-09-20 05:16:54,259 - INFO - Saved 22 rows.
+2026-09-20 05:16:54,259 - INFO - Fetching: Andhra Pradesh - Kurnool | B-Ve | Platelet Rich Plasma
+2026-09-20 05:16:55,146 - INFO - No data found.
+2026-09-20 05:16:55,146 - INFO - Fetching: Andhra Pradesh - Kurnool | O+Ve | Packed Red Blood Cells
+2026-09-20 05:16:56,004 - INFO - Saved 22 rows.
+2026-09-20 05:16:56,004 - INFO - Fetching: Andhra Pradesh - Kurnool | O+Ve | Fresh Frozen Plasma
+2026-09-20 05:16:56,864 - INFO - Saved 22 rows.
+2026-09-20 05:16:56,864 - INFO - Fetching: Andhra Pradesh - Kurnool | O+Ve | Platelet Rich Plasma
+2026-09-20 05:16:57,722 - INFO - No data found.
+2026-09-20 05:16:57,722 - INFO - Fetching: Andhra Pradesh - Kurnool | O-Ve | Packed Red Blood Cells
+2026-09-20 05:16:58,656 - INFO - Saved 22 rows.
+2026-09-20 05:16:58,656 - INFO - Fetching: Andhra Pradesh - Kurnool | O-Ve | Fresh Frozen Plasma
+2026-09-20 05:16:59,518 - INFO - Saved 22 rows.
+2026-09-20 05:16:59,518 - INFO - Fetching: Andhra Pradesh - Kurnool | O-Ve | Platelet Rich Plasma
+2026-09-20 05:17:00,369 - INFO - No data found.
+2026-09-20 05:17:00,369 - INFO - Fetching: Andhra Pradesh - Kurnool | AB+Ve | Packed Red Blood Cells
+2026-09-20 05:17:01,225 - INFO - Saved 22 rows.
+2026-09-20 05:17:01,225 - INFO - Fetching: Andhra Pradesh - Kurnool | AB+Ve | Fresh Frozen Plasma
+2026-09-20 05:17:02,086 - INFO - Saved 22 rows.
+2026-09-20 05:17:02,086 - INFO - Fetching: Andhra Pradesh - Kurnool | AB+Ve | Platelet Rich Plasma
+2026-09-20 05:17:02,947 - INFO - No data found.
+2026-09-20 05:17:02,947 - INFO - Fetching: Andhra Pradesh - Kurnool | AB-Ve | Packed Red Blood Cells
+2026-09-20 05:17:04,074 - INFO - Saved 22 rows.
+2026-09-20 05:17:04,074 - INFO - Fetching: Andhra Pradesh - Kurnool | AB-Ve | Fresh Frozen Plasma
+2026-09-20 05:17:04,945 - INFO - Saved 22 rows.
+2026-09-20 05:17:04,945 - INFO - Fetching: Andhra Pradesh - Kurnool | AB-Ve | Platelet Rich Plasma
+2026-09-20 05:17:05,811 - INFO - No data found.
+2026-09-20 05:17:05,811 - INFO - Fetching: Andhra Pradesh - Prakasam | A+Ve | Packed Red Blood Cells
+2026-09-20 05:17:06,718 - INFO - Saved 18 rows.
+2026-09-20 05:17:06,718 - INFO - Fetching: Andhra Pradesh - Prakasam | A+Ve | Fresh Frozen Plasma
+2026-09-20 05:17:07,590 - INFO - Saved 18 rows.
+2026-09-20 05:17:07,590 - INFO - Fetching: Andhra Pradesh - Prakasam | A+Ve | Platelet Rich Plasma
+2026-09-20 05:17:08,439 - INFO - No data found.
+2026-09-20 05:17:08,439 - INFO - Fetching: Andhra Pradesh - Prakasam | A-Ve | Packed Red Blood Cells
+2026-09-20 05:17:09,302 - INFO - Saved 18 rows.
+2026-09-20 05:17:09,302 - INFO - Fetching: Andhra Pradesh - Prakasam | A-Ve | Fresh Frozen Plasma
+2026-09-20 05:17:10,170 - INFO - Saved 18 rows.
+2026-09-20 05:17:10,170 - INFO - Fetching: Andhra Pradesh - Prakasam | A-Ve | Platelet Rich Plasma
+2026-09-20 05:17:11,012 - INFO - No data found.
+2026-09-20 05:17:11,013 - INFO - Fetching: Andhra Pradesh - Prakasam | B+Ve | Packed Red Blood Cells
+2026-09-20 05:17:11,896 - INFO - Saved 18 rows.
+2026-09-20 05:17:11,896 - INFO - Fetching: Andhra Pradesh - Prakasam | B+Ve | Fresh Frozen Plasma
+2026-09-20 05:17:12,765 - INFO - Saved 18 rows.
+2026-09-20 05:17:12,765 - INFO - Fetching: Andhra Pradesh - Prakasam | B+Ve | Platelet Rich Plasma
+2026-09-20 05:17:13,614 - INFO - No data found.
+2026-09-20 05:17:13,614 - INFO - Fetching: Andhra Pradesh - Prakasam | B-Ve | Packed Red Blood Cells
+2026-09-20 05:17:14,476 - INFO - Saved 18 rows.
+2026-09-20 05:17:14,476 - INFO - Fetching: Andhra Pradesh - Prakasam | B-Ve | Fresh Frozen Plasma
+2026-09-20 05:17:15,391 - INFO - Saved 18 rows.
+2026-09-20 05:17:15,391 - INFO - Fetching: Andhra Pradesh - Prakasam | B-Ve | Platelet Rich Plasma
+2026-09-20 05:17:16,274 - INFO - No data found.
+2026-09-20 05:17:16,274 - INFO - Fetching: Andhra Pradesh - Prakasam | O+Ve | Packed Red Blood Cells
+2026-09-20 05:17:17,142 - INFO - Saved 18 rows.
+2026-09-20 05:17:17,142 - INFO - Fetching: Andhra Pradesh - Prakasam | O+Ve | Fresh Frozen Plasma
+2026-09-20 05:17:18,041 - INFO - Saved 18 rows.
+2026-09-20 05:17:18,041 - INFO - Fetching: Andhra Pradesh - Prakasam | O+Ve | Platelet Rich Plasma
+2026-09-20 05:17:18,922 - INFO - No data found.
+2026-09-20 05:17:18,922 - INFO - Fetching: Andhra Pradesh - Prakasam | O-Ve | Packed Red Blood Cells
+2026-09-20 05:17:19,781 - INFO - Saved 18 rows.
+2026-09-20 05:17:19,781 - INFO - Fetching: Andhra Pradesh - Prakasam | O-Ve | Fresh Frozen Plasma
+2026-09-20 05:17:20,662 - INFO - Saved 18 rows.
+2026-09-20 05:17:20,662 - INFO - Fetching: Andhra Pradesh - Prakasam | O-Ve | Platelet Rich Plasma
+2026-09-20 05:17:21,528 - INFO - No data found.
+2026-09-20 05:17:21,528 - INFO - Fetching: Andhra Pradesh - Prakasam | AB+Ve | Packed Red Blood Cells
+2026-09-20 05:17:22,506 - INFO - Saved 18 rows.
+2026-09-20 05:17:22,506 - INFO - Fetching: Andhra Pradesh - Prakasam | AB+Ve | Fresh Frozen Plasma
+2026-09-20 05:17:23,376 - INFO - Saved 18 rows.
+2026-09-20 05:17:23,376 - INFO - Fetching: Andhra Pradesh - Prakasam | AB+Ve | Platelet Rich Plasma
+2026-09-20 05:17:24,229 - INFO - No data found.
+2026-09-20 05:17:24,229 - INFO - Fetching: Andhra Pradesh - Prakasam | AB-Ve | Packed Red Blood Cells
+2026-09-20 05:17:25,095 - INFO - Saved 18 rows.
+2026-09-20 05:17:25,095 - INFO - Fetching: Andhra Pradesh - Prakasam | AB-Ve | Fresh Frozen Plasma
+2026-09-20 05:17:25,991 - INFO - Saved 18 rows.
+2026-09-20 05:17:25,991 - INFO - Fetching: Andhra Pradesh - Prakasam | AB-Ve | Platelet Rich Plasma
+2026-09-20 05:17:26,857 - INFO - No data found.
+2026-09-20 05:17:26,857 - INFO - Fetching: Andhra Pradesh - Srikakulam | A+Ve | Packed Red Blood Cells
+2026-09-20 05:17:27,747 - INFO - Saved 19 rows.
+2026-09-20 05:17:27,747 - INFO - Fetching: Andhra Pradesh - Srikakulam | A+Ve | Fresh Frozen Plasma
+2026-09-20 05:17:28,615 - INFO - Saved 19 rows.
+2026-09-20 05:17:28,615 - INFO - Fetching: Andhra Pradesh - Srikakulam | A+Ve | Platelet Rich Plasma
+2026-09-20 05:17:29,487 - INFO - No data found.
+2026-09-20 05:17:29,487 - INFO - Fetching: Andhra Pradesh - Srikakulam | A-Ve | Packed Red Blood Cells
+2026-09-20 05:17:30,353 - INFO - Saved 19 rows.
+2026-09-20 05:17:30,353 - INFO - Fetching: Andhra Pradesh - Srikakulam | A-Ve | Fresh Frozen Plasma
+2026-09-20 05:17:31,226 - INFO - Saved 19 rows.
+2026-09-20 05:17:31,226 - INFO - Fetching: Andhra Pradesh - Srikakulam | A-Ve | Platelet Rich Plasma
+2026-09-20 05:17:32,213 - INFO - No data found.
+2026-09-20 05:17:32,213 - INFO - Fetching: Andhra Pradesh - Srikakulam | B+Ve | Packed Red Blood Cells
+2026-09-20 05:17:33,091 - INFO - Saved 19 rows.
+2026-09-20 05:17:33,091 - INFO - Fetching: Andhra Pradesh - Srikakulam | B+Ve | Fresh Frozen Plasma
+2026-09-20 05:17:34,016 - INFO - Saved 19 rows.
+2026-09-20 05:17:34,016 - INFO - Fetching: Andhra Pradesh - Srikakulam | B+Ve | Platelet Rich Plasma
+2026-09-20 05:17:34,922 - INFO - No data found.
+2026-09-20 05:17:34,922 - INFO - Fetching: Andhra Pradesh - Srikakulam | B-Ve | Packed Red Blood Cells
+2026-09-20 05:17:35,796 - INFO - Saved 19 rows.
+2026-09-20 05:17:35,796 - INFO - Fetching: Andhra Pradesh - Srikakulam | B-Ve | Fresh Frozen Plasma
+2026-09-20 05:17:36,669 - INFO - Saved 19 rows.
+2026-09-20 05:17:36,669 - INFO - Fetching: Andhra Pradesh - Srikakulam | B-Ve | Platelet Rich Plasma
+2026-09-20 05:17:37,530 - INFO - No data found.
+2026-09-20 05:17:37,530 - INFO - Fetching: Andhra Pradesh - Srikakulam | O+Ve | Packed Red Blood Cells
+2026-09-20 05:17:38,444 - INFO - Saved 19 rows.
+2026-09-20 05:17:38,444 - INFO - Fetching: Andhra Pradesh - Srikakulam | O+Ve | Fresh Frozen Plasma
+2026-09-20 05:17:39,329 - INFO - Saved 19 rows.
+2026-09-20 05:17:39,329 - INFO - Fetching: Andhra Pradesh - Srikakulam | O+Ve | Platelet Rich Plasma
+2026-09-20 05:17:40,179 - INFO - No data found.
+2026-09-20 05:17:40,180 - INFO - Fetching: Andhra Pradesh - Srikakulam | O-Ve | Packed Red Blood Cells
+2026-09-20 05:17:41,084 - INFO - Saved 19 rows.
+2026-09-20 05:17:41,085 - INFO - Fetching: Andhra Pradesh - Srikakulam | O-Ve | Fresh Frozen Plasma
+2026-09-20 05:17:41,961 - INFO - Saved 19 rows.
+2026-09-20 05:17:41,961 - INFO - Fetching: Andhra Pradesh - Srikakulam | O-Ve | Platelet Rich Plasma
+2026-09-20 05:17:42,810 - INFO - No data found.
+2026-09-20 05:17:42,811 - INFO - Fetching: Andhra Pradesh - Srikakulam | AB+Ve | Packed Red Blood Cells
+2026-09-20 05:17:43,718 - INFO - Saved 19 rows.
+2026-09-20 05:17:43,718 - INFO - Fetching: Andhra Pradesh - Srikakulam | AB+Ve | Fresh Frozen Plasma
+2026-09-20 05:17:44,642 - INFO - Saved 19 rows.
+2026-09-20 05:17:44,642 - INFO - Fetching: Andhra Pradesh - Srikakulam | AB+Ve | Platelet Rich Plasma
+2026-09-20 05:17:45,523 - INFO - No data found.
+2026-09-20 05:17:45,523 - INFO - Fetching: Andhra Pradesh - Srikakulam | AB-Ve | Packed Red Blood Cells
+2026-09-20 05:17:46,413 - INFO - Saved 19 rows.
+2026-09-20 05:17:46,413 - INFO - Fetching: Andhra Pradesh - Srikakulam | AB-Ve | Fresh Frozen Plasma
+2026-09-20 05:17:47,310 - INFO - Saved 19 rows.
+2026-09-20 05:17:47,310 - INFO - Fetching: Andhra Pradesh - Srikakulam | AB-Ve | Platelet Rich Plasma
+2026-09-20 05:17:48,169 - INFO - No data found.
+2026-09-20 05:17:48,169 - INFO - Fetching: Andhra Pradesh - Vizianagaram | A+Ve | Packed Red Blood Cells
+2026-09-20 05:17:49,045 - INFO - Saved 17 rows.
+2026-09-20 05:17:49,045 - INFO - Fetching: Andhra Pradesh - Vizianagaram | A+Ve | Fresh Frozen Plasma
+2026-09-20 05:17:49,937 - INFO - Saved 17 rows.
+2026-09-20 05:17:49,937 - INFO - Fetching: Andhra Pradesh - Vizianagaram | A+Ve | Platelet Rich Plasma
+2026-09-20 05:17:50,803 - INFO - No data found.
+2026-09-20 05:17:50,803 - INFO - Fetching: Andhra Pradesh - Vizianagaram | A-Ve | Packed Red Blood Cells
+2026-09-20 05:17:51,693 - INFO - Saved 17 rows.
+2026-09-20 05:17:51,694 - INFO - Fetching: Andhra Pradesh - Vizianagaram | A-Ve | Fresh Frozen Plasma
+2026-09-20 05:17:52,571 - INFO - Saved 17 rows.
+2026-09-20 05:17:52,571 - INFO - Fetching: Andhra Pradesh - Vizianagaram | A-Ve | Platelet Rich Plasma
+2026-09-20 05:17:53,433 - INFO - No data found.
+2026-09-20 05:17:53,433 - INFO - Fetching: Andhra Pradesh - Vizianagaram | B+Ve | Packed Red Blood Cells
+2026-09-20 05:17:54,290 - INFO - Saved 17 rows.
+2026-09-20 05:17:54,290 - INFO - Fetching: Andhra Pradesh - Vizianagaram | B+Ve | Fresh Frozen Plasma
+2026-09-20 05:17:55,167 - INFO - Saved 17 rows.
+2026-09-20 05:17:55,167 - INFO - Fetching: Andhra Pradesh - Vizianagaram | B+Ve | Platelet Rich Plasma
+2026-09-20 05:17:56,020 - INFO - No data found.
+2026-09-20 05:17:56,020 - INFO - Fetching: Andhra Pradesh - Vizianagaram | B-Ve | Packed Red Blood Cells
+2026-09-20 05:17:56,934 - INFO - Saved 17 rows.
+2026-09-20 05:17:56,935 - INFO - Fetching: Andhra Pradesh - Vizianagaram | B-Ve | Fresh Frozen Plasma
+2026-09-20 05:17:57,794 - INFO - Saved 17 rows.
+2026-09-20 05:17:57,794 - INFO - Fetching: Andhra Pradesh - Vizianagaram | B-Ve | Platelet Rich Plasma
+2026-09-20 05:17:58,668 - INFO - No data found.
+2026-09-20 05:17:58,668 - INFO - Fetching: Andhra Pradesh - Vizianagaram | O+Ve | Packed Red Blood Cells
+2026-09-20 05:17:59,516 - INFO - Saved 17 rows.
+2026-09-20 05:17:59,516 - INFO - Fetching: Andhra Pradesh - Vizianagaram | O+Ve | Fresh Frozen Plasma
+2026-09-20 05:18:00,384 - INFO - Saved 17 rows.
+2026-09-20 05:18:00,385 - INFO - Fetching: Andhra Pradesh - Vizianagaram | O+Ve | Platelet Rich Plasma
+2026-09-20 05:18:01,230 - INFO - No data found.
+2026-09-20 05:18:01,230 - INFO - Fetching: Andhra Pradesh - Vizianagaram | O-Ve | Packed Red Blood Cells
+2026-09-20 05:18:02,092 - INFO - Saved 17 rows.
+2026-09-20 05:18:02,092 - INFO - Fetching: Andhra Pradesh - Vizianagaram | O-Ve | Fresh Frozen Plasma
+2026-09-20 05:18:02,971 - INFO - Saved 17 rows.
+2026-09-20 05:18:02,971 - INFO - Fetching: Andhra Pradesh - Vizianagaram | O-Ve | Platelet Rich Plasma
+2026-09-20 05:18:04,018 - INFO - No data found.
+2026-09-20 05:18:04,018 - INFO - Fetching: Andhra Pradesh - Vizianagaram | AB+Ve | Packed Red Blood Cells
+2026-09-20 05:18:04,884 - INFO - Saved 17 rows.
+2026-09-20 05:18:04,884 - INFO - Fetching: Andhra Pradesh - Vizianagaram | AB+Ve | Fresh Frozen Plasma
+2026-09-20 05:18:05,758 - INFO - Saved 17 rows.
+2026-09-20 05:18:05,758 - INFO - Fetching: Andhra Pradesh - Vizianagaram | AB+Ve | Platelet Rich Plasma
+2026-09-20 05:18:06,654 - INFO - No data found.
+2026-09-20 05:18:06,655 - INFO - Fetching: Andhra Pradesh - Vizianagaram | AB-Ve | Packed Red Blood Cells
+2026-09-20 05:18:07,543 - INFO - Saved 17 rows.
+2026-09-20 05:18:07,543 - INFO - Fetching: Andhra Pradesh - Vizianagaram | AB-Ve | Fresh Frozen Plasma
+2026-09-20 05:18:08,412 - INFO - Saved 17 rows.
+2026-09-20 05:18:08,412 - INFO - Fetching: Andhra Pradesh - Vizianagaram | AB-Ve | Platelet Rich Plasma
+2026-09-20 05:18:09,276 - INFO - No data found.
+2026-09-20 05:18:09,277 - INFO - Fetching: Andhra Pradesh - West Godavari | A+Ve | Packed Red Blood Cells
+2026-09-20 05:18:10,146 - INFO - Saved 17 rows.
+2026-09-20 05:18:10,146 - INFO - Fetching: Andhra Pradesh - West Godavari | A+Ve | Fresh Frozen Plasma
+2026-09-20 05:18:11,025 - INFO - Saved 17 rows.
+2026-09-20 05:18:11,025 - INFO - Fetching: Andhra Pradesh - West Godavari | A+Ve | Platelet Rich Plasma
+2026-09-20 05:18:11,875 - INFO - No data found.
+2026-09-20 05:18:11,876 - INFO - Fetching: Andhra Pradesh - West Godavari | A-Ve | Packed Red Blood Cells
+2026-09-20 05:18:12,732 - INFO - Saved 17 rows.
+2026-09-20 05:18:12,732 - INFO - Fetching: Andhra Pradesh - West Godavari | A-Ve | Fresh Frozen Plasma
+2026-09-20 05:18:13,669 - INFO - Saved 17 rows.
+2026-09-20 05:18:13,669 - INFO - Fetching: Andhra Pradesh - West Godavari | A-Ve | Platelet Rich Plasma
+2026-09-20 05:18:14,543 - INFO - No data found.
+2026-09-20 05:18:14,543 - INFO - Fetching: Andhra Pradesh - West Godavari | B+Ve | Packed Red Blood Cells
+2026-09-20 05:18:15,411 - INFO - Saved 17 rows.
+2026-09-20 05:18:15,411 - INFO - Fetching: Andhra Pradesh - West Godavari | B+Ve | Fresh Frozen Plasma
+2026-09-20 05:18:16,285 - INFO - Saved 17 rows.
+2026-09-20 05:18:16,285 - INFO - Fetching: Andhra Pradesh - West Godavari | B+Ve | Platelet Rich Plasma
+2026-09-20 05:18:17,146 - INFO - No data found.
+2026-09-20 05:18:17,146 - INFO - Fetching: Andhra Pradesh - West Godavari | B-Ve | Packed Red Blood Cells
+2026-09-20 05:18:18,020 - INFO - Saved 17 rows.
+2026-09-20 05:18:18,020 - INFO - Fetching: Andhra Pradesh - West Godavari | B-Ve | Fresh Frozen Plasma
+2026-09-20 05:18:18,887 - INFO - Saved 17 rows.
+2026-09-20 05:18:18,887 - INFO - Fetching: Andhra Pradesh - West Godavari | B-Ve | Platelet Rich Plasma
+2026-09-20 05:18:19,738 - INFO - No data found.
+2026-09-20 05:18:19,738 - INFO - Fetching: Andhra Pradesh - West Godavari | O+Ve | Packed Red Blood Cells
+2026-09-20 05:18:20,607 - INFO - Saved 17 rows.
+2026-09-20 05:18:20,607 - INFO - Fetching: Andhra Pradesh - West Godavari | O+Ve | Fresh Frozen Plasma
+2026-09-20 05:18:21,474 - INFO - Saved 17 rows.
+2026-09-20 05:18:21,474 - INFO - Fetching: Andhra Pradesh - West Godavari | O+Ve | Platelet Rich Plasma
+2026-09-20 05:18:22,325 - INFO - No data found.
+2026-09-20 05:18:22,325 - INFO - Fetching: Andhra Pradesh - West Godavari | O-Ve | Packed Red Blood Cells
+2026-09-20 05:18:23,196 - INFO - Saved 17 rows.
+2026-09-20 05:18:23,197 - INFO - Fetching: Andhra Pradesh - West Godavari | O-Ve | Fresh Frozen Plasma
+2026-09-20 05:18:24,061 - INFO - Saved 17 rows.
+2026-09-20 05:18:24,061 - INFO - Fetching: Andhra Pradesh - West Godavari | O-Ve | Platelet Rich Plasma
+2026-09-20 05:18:24,941 - INFO - No data found.
+2026-09-20 05:18:24,941 - INFO - Fetching: Andhra Pradesh - West Godavari | AB+Ve | Packed Red Blood Cells
+2026-09-20 05:18:25,809 - INFO - Saved 17 rows.
+2026-09-20 05:18:25,809 - INFO - Fetching: Andhra Pradesh - West Godavari | AB+Ve | Fresh Frozen Plasma
+2026-09-20 05:18:26,679 - INFO - Saved 17 rows.
+2026-09-20 05:18:26,680 - INFO - Fetching: Andhra Pradesh - West Godavari | AB+Ve | Platelet Rich Plasma
+2026-09-20 05:18:27,533 - INFO - No data found.
+2026-09-20 05:18:27,533 - INFO - Fetching: Andhra Pradesh - West Godavari | AB-Ve | Packed Red Blood Cells
+2026-09-20 05:18:28,409 - INFO - Saved 17 rows.
+2026-09-20 05:18:28,409 - INFO - Fetching: Andhra Pradesh - West Godavari | AB-Ve | Fresh Frozen Plasma
+2026-09-20 05:18:29,293 - INFO - Saved 17 rows.
+2026-09-20 05:18:29,293 - INFO - Fetching: Andhra Pradesh - West Godavari | AB-Ve | Platelet Rich Plasma
+2026-09-20 05:18:30,154 - INFO - No data found.
+2026-09-20 05:18:30,154 - INFO - Collection complete. Fetched 2048 total records to blood_data.csv.
