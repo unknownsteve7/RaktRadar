@@ -16,10 +16,10 @@ MASTER_URL = "https://eraktkosh.mohfw.gov.in/eraktkoshPortal/eraktkosh/master/al
 STOCK_URL = "https://eraktkosh.mohfw.gov.in/eraktkoshPortal/eraktkosh/blood-availability"
 
 COLLECTION_CONFIG = {
-    "states": ["Andhra Pradesh"],
-    "districts" : ["Alluri Sitharama Raju", "East Godavari", "Krishna", "Kurnool", "Prakasam", "Srikakulam", "Vizianagaram", "Vishakhapatnam", "West Godavari", "Y.S.R. Kadapa"],
-    "blood_groups": ['A+Ve', 'A-Ve', 'B+Ve', 'B-Ve', 'O+Ve', 'O-Ve', 'AB+Ve', 'AB-Ve'],
-    "components": ['Packed Red Blood Cells', 'Fresh Frozen Plasma','Platelet Rich Plasma']
+    "states": [], 
+    "districts": [], 
+    "blood_groups": [],
+    "components": []
 }
 
 
