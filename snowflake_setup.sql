@@ -1,5 +1,13 @@
-create warehouse raktradar_wh with WAREHOUSE_SIZE = 'X-SMALL' AUTO_SUSPEND = 60;
 use role accountadmin;
+
+create warehouse if not exists raktradar_wh with
+    WAREHOUSE_SIZE = 'X-SMALL'
+    AUTO_SUSPEND = 60
+    AUTO_RESUME = TRUE
+    INITIALLY_SUSPENDED = TRUE;
+
+create database if not exists RAKTRADAR;
+use database RAKTRADAR;
 
 create schema if not exists RAW;
 create schema if not exists ANALYTICS;
