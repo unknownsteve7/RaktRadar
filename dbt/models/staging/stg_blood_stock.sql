@@ -14,7 +14,7 @@ with src as (
 components as (
 
     select src.*, c.key::string as component_name, c.value as stock
-    from src, lateral flatten(input => v:components) c
+    from src, lateral flatten(input => src.v:components) as c
 
 ),
 
@@ -22,13 +22,13 @@ cells as (
 
     select components.*, true as is_available, s.value::string as cell
     from components,
-        lateral flatten(input => split(coalesce(stock:available_WithQty::string, ''), ',')) s
+        lateral flatten(input => split(coalesce(components.stock:available_WithQty::string, ''), ',')) as s
 
     union all
 
     select components.*, false as is_available, s.value::string as cell
     from components,
-        lateral flatten(input => split(coalesce(stock:not_available_WithQty::string, ''), ',')) s
+        lateral flatten(input => split(coalesce(components.stock:not_available_WithQty::string, ''), ',')) as s
 
 ),
 

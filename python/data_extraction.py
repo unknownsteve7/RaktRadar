@@ -96,7 +96,7 @@ async def fetch_all(params_list, session, sem, f):
     results = await asyncio.gather(*tasks, return_exceptions=True)
 
     failed, total = [], 0
-    for params, res in zip(params_list, results):
+    for params, res in zip(params_list, results, strict=True):
         if isinstance(res, Exception):
             logging.error(f"District {params} failed after retries: {res!r}")
             failed.append(params)
@@ -132,7 +132,8 @@ async def run_collection(output_prefix="blood_data"):
     params_list = []
     for state_name in states_to_fetch:
         state_code = state_dict.get(state_name)
-        if not state_code: continue
+        if not state_code:
+            continue
 
         for district_name, district_code in district_dict.get(state_code, {}).items():
             if districts_to_fetch and district_name not in districts_to_fetch:

@@ -11,7 +11,7 @@ with stock as (
 
     select * from {{ ref('stg_blood_stock') }}
     {% if is_incremental() %}
-    where _loaded_at > (select max(_loaded_at) from {{ this }})
+    where _loaded_at > (select max(existing._loaded_at) from {{ this }} as existing)
     {% endif %}
 
 )
@@ -33,8 +33,8 @@ select
     s.days_since_update,
     s.is_stale,
     s._loaded_at
-from stock s
-left join {{ ref('dim_blood_bank') }} d
-    on  d.hospital_code = s.hospital_code
+from stock as s
+left join {{ ref('dim_blood_bank') }} as d
+    on  s.hospital_code = d.hospital_code
     and s.run_id >= d.valid_from_run_id
     and (d.valid_to_run_id is null or s.run_id < d.valid_to_run_id)
