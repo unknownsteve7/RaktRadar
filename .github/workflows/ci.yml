@@ -15,7 +15,7 @@ jobs:
           python-version: '3.11'
       - run: pip install ruff==0.17.0
       - name: ruff
-        run: ruff check python/ --output-format github
+        run: ruff check python/ streamlit/ --output-format github
 
   dbt:
     runs-on: ubuntu-latest

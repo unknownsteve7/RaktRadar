@@ -44,6 +44,7 @@ The live portal runs two versions in parallel: a legacy jQuery/DataTables site (
 | `dim_blood_bank` | table | blood bank version (SCD2) |
 | `fct_stock_snapshot` | incremental | run × blood bank × component × blood group, keyed to the dim version valid for that run |
 | `alert_critical_shortages` | view | district × blood group that just ran out of red cells (all reporting banks at 0, had stock last run) |
+| `agg_district_stock` | incremental | run × district × component × blood group rollup for the dashboard |
 | `ref_districts` | seed | state and district names for the portal's codes |
 
 **Snowflake layout:** `RAKTRADAR` database with `RAW` and `ANALYTICS` schemas, an X-Small warehouse with 60s auto-suspend, and three roles — `RAKT_LOADER` (writes `RAW`), `RAKT_TRANSFORMER` (reads `RAW`, builds `ANALYTICS`), `RAKT_REPORTER` (reads `ANALYTICS`). CI authenticates as key-pair service users.
@@ -57,7 +58,8 @@ The live portal runs two versions in parallel: a legacy jQuery/DataTables site (
 - [x] Load step: `PUT` + `COPY INTO`, with the raw file kept as a 14-day artifact
 - [x] dbt staging, SCD2 blood bank dimension, incremental stock fact, 24 data tests
 - [x] CI on every PR: `ruff`, `sqlfluff`, `dbt parse`
-- [ ] Streamlit in Snowflake dashboard (district-level availability map)
+- [x] Streamlit in Snowflake dashboard: current stock by state/district, daily trend, new shortages, stale reporting
+- [ ] District-level map (needs eRaktKosh → LGD/GeoJSON district mapping)
 - [x] Daily email for new red-cell shortages (Snowflake alert + email notification integration), with a "no data today" warning
 - [ ] Descriptive and diagnostic analysis — chronic shortages, weekday and festival effects
 
@@ -90,7 +92,7 @@ The live portal runs two versions in parallel: a legacy jQuery/DataTables site (
 | Transformation | dbt Core + dbt-snowflake (snapshots, incremental models, tests) |
 | CI | `ruff`, `sqlfluff`, `dbt parse` |
 | Alerting | Snowflake alerts, `SYSTEM$SEND_SNOWFLAKE_NOTIFICATION` |
-| Planned | Streamlit in Snowflake |
+| Dashboard | Streamlit in Snowflake, deployed from this repo |
 
 ## Repository Layout
 
@@ -102,6 +104,8 @@ snowflake_setup.sql            # warehouse, schemas, roles, stage, raw table
 snowflake_service_user.sql     # key-pair service users for CI
 snowflake_git_integration.sql  # lets Snowflake run SQL straight from this repo
 snowflake_alerts.sql           # daily shortage email (procedure + alert)
+snowflake_streamlit.sql        # deploys the dashboard from streamlit/
+streamlit/streamlit_app.py     # dashboard
 .github/workflows/             # daily pipeline + PR CI
 ```
 
