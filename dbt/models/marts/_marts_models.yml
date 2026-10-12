@@ -1,0 +1,29 @@
+version: 2
+
+models:
+  - name: dim_blood_bank
+    description: SCD2 blood bank dimension built from snap_blood_bank; one row per version.
+    columns:
+      - name: blood_bank_sk
+        data_tests: [unique, not_null]
+      - name: hospital_code
+        data_tests: [not_null]
+
+  - name: fct_stock_snapshot
+    description: >
+      Incremental daily stock history at run x blood bank x component x blood group.
+      blood_bank_sk points at the dim_blood_bank version valid for that run.
+    columns:
+      - name: run_id
+        data_tests: [not_null]
+      - name: snapshot_date
+        data_tests: [not_null]
+      - name: blood_bank_sk
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_blood_bank')
+                field: blood_bank_sk
+      - name: units
+        data_tests: [not_null]

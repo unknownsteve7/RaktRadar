@@ -4,6 +4,7 @@ profile: raktradar
 
 model-paths: ["models"]
 test-paths: ["tests"]
+snapshot-paths: ["snapshots"]
 target-path: target
 clean-targets: [target, dbt_packages]
 
@@ -15,3 +16,5 @@ models:
   raktradar:
     staging:
       +materialized: view
+    marts:
+      +materialized: table
