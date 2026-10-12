@@ -6507,6 +6507,9 @@
 2026-10-12 07:33:09,750 - ERROR - Task failed with exception after retries: RetryError[<Future at 0x7f5d75d7a810 state=finished raised TimeoutError>]
 2026-10-12 07:33:09,751 - INFO - Processed 109340 / 109340 tasks. Total records extracted: 409867
 2026-10-12 07:33:09,751 - INFO - Collection complete. Safely extracted 409867 total records to blood_data_20261012_062152.ndjson.gz.
+2026-10-12 11:46:26,693 - INFO - Loaded master data from cache.
+2026-10-12 11:46:26,693 - INFO - Fetching 781 districts...
+2026-10-12 11:48:00,483 - INFO - Collection complete. Extracted 4708 blood bank records from 781/781 districts to blood_data_20261012_114626.ndjson.gz.
 2026-10-12 10:53:49,448 - INFO - Loaded master data from cache.
 2026-10-12 10:53:49,474 - INFO - Generated 109340 API call parameters. Starting async fetch...
 2026-10-12 10:54:10,429 - INFO - Processed 1000 / 109340 tasks. Total records extracted: 3486
