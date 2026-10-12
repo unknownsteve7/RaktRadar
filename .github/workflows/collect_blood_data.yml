@@ -27,15 +27,32 @@ jobs:
           
       - name: Run collection script
         run: python python/data_extraction.py
-        
+
+      # Safety net: keep the raw file for 14 days even if the Snowflake load fails
+      - name: Upload extract as artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: blood-data-${{ github.run_id }}
+          path: blood_data_*.ndjson.gz
+          retention-days: 14
+          if-no-files-found: error
+
+      - name: Load into Snowflake
+        env:
+          SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
+          SNOWFLAKE_USER: ${{ secrets.SNOWFLAKE_USER }}
+          SNOWFLAKE_PRIVATE_KEY: ${{ secrets.SNOWFLAKE_PRIVATE_KEY }}
+        run: python python/load_to_snowflake.py
+
       - name: Commit and push changes
         run: |
           # Configure git as the github-actions bot
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           
-          # Add the tracked data files
-          git add blood_data.csv eraktkosh_stock_log.log master_data.json
+          # Data goes to Snowflake now; only the log and reference cache are committed
+          git add eraktkosh_stock_log.log master_data.json
           
           # Check if there are any staged changes. If quiet, no changes.
           if git diff --staged --quiet; then
