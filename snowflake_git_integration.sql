@@ -18,5 +18,7 @@ create git repository if not exists RAKTRADAR.PUBLIC.RAKTRADAR_REPO
 -- ==============================================================================
 alter git repository RAKTRADAR.PUBLIC.RAKTRADAR_REPO fetch;
 
+-- List the files in the main branch
 -- ls @RAKTRADAR.PUBLIC.RAKTRADAR_REPO/branches/main/;
 -- execute immediate from @RAKTRADAR.PUBLIC.RAKTRADAR_REPO/branches/main/snowflake_setup.sql;
+
