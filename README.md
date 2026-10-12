@@ -43,6 +43,8 @@ The live portal runs two versions in parallel: a legacy jQuery/DataTables site (
 | `snap_blood_bank` | dbt snapshot | blood bank version (check strategy on name, address, contact, category, type, location) |
 | `dim_blood_bank` | table | blood bank version (SCD2) |
 | `fct_stock_snapshot` | incremental | run × blood bank × component × blood group, keyed to the dim version valid for that run |
+| `alert_critical_shortages` | view | district × blood group that just ran out of red cells (all reporting banks at 0, had stock last run) |
+| `ref_districts` | seed | state and district names for the portal's codes |
 
 **Snowflake layout:** `RAKTRADAR` database with `RAW` and `ANALYTICS` schemas, an X-Small warehouse with 60s auto-suspend, and three roles — `RAKT_LOADER` (writes `RAW`), `RAKT_TRANSFORMER` (reads `RAW`, builds `ANALYTICS`), `RAKT_REPORTER` (reads `ANALYTICS`). CI authenticates as key-pair service users.
 
@@ -56,7 +58,7 @@ The live portal runs two versions in parallel: a legacy jQuery/DataTables site (
 - [x] dbt staging, SCD2 blood bank dimension, incremental stock fact, 24 data tests
 - [x] CI on every PR: `ruff`, `sqlfluff`, `dbt parse`
 - [ ] Streamlit in Snowflake dashboard (district-level availability map)
-- [ ] Telegram alerts for critical shortages, filtered on stale reporting
+- [x] Daily email for new red-cell shortages (Snowflake alert + email notification integration), with a "no data today" warning
 - [ ] Descriptive and diagnostic analysis — chronic shortages, weekday and festival effects
 
 ## Notable Technical Decisions
@@ -87,7 +89,8 @@ The live portal runs two versions in parallel: a legacy jQuery/DataTables site (
 | Warehouse | Snowflake (internal stage, `VARIANT`, RBAC, Git integration) |
 | Transformation | dbt Core + dbt-snowflake (snapshots, incremental models, tests) |
 | CI | `ruff`, `sqlfluff`, `dbt parse` |
-| Planned | Streamlit in Snowflake, Telegram Bot API |
+| Alerting | Snowflake alerts, `SYSTEM$SEND_SNOWFLAKE_NOTIFICATION` |
+| Planned | Streamlit in Snowflake |
 
 ## Repository Layout
 
@@ -98,6 +101,7 @@ dbt/                           # staging, snapshot, marts, tests
 snowflake_setup.sql            # warehouse, schemas, roles, stage, raw table
 snowflake_service_user.sql     # key-pair service users for CI
 snowflake_git_integration.sql  # lets Snowflake run SQL straight from this repo
+snowflake_alerts.sql           # daily shortage email (procedure + alert)
 .github/workflows/             # daily pipeline + PR CI
 ```
 

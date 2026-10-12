@@ -1,0 +1,14 @@
+version: 2
+
+seeds:
+  - name: ref_districts
+    description: State and district names for eRaktKosh codes, generated from master_data.json.
+    config:
+      column_types:
+        state_code: varchar
+        state_name: varchar
+        district_code: varchar
+        district_name: varchar
+    columns:
+      - name: district_code
+        data_tests: [unique, not_null]
