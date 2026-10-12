@@ -1,0 +1,15 @@
+snapshots:
+  - name: snap_blood_bank
+    relation: ref('stg_blood_banks')
+    description: SCD2 history of blood bank attributes; a new version whenever a check column changes.
+    config:
+      unique_key: hospital_code
+      strategy: check
+      check_cols:
+        - blood_bank_name
+        - address
+        - contact
+        - hospital_category
+        - bank_type
+        - state_code
+        - district_code
