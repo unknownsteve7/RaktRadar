@@ -33,3 +33,13 @@ models:
       New red-cell shortages (Packed Red Blood Cells + Whole Blood) per district x blood group:
       every non-stale bank now reports 0 units, and the same banks had stock in the previous run.
       Feeds the daily shortage email.
+
+  - name: agg_district_stock
+    description: >
+      Dashboard rollup at run x district x component x blood group. units and banks_with_stock
+      count only reporting (non-stale) banks; banks_stale counts the rest.
+    columns:
+      - name: run_id
+        data_tests: [not_null]
+      - name: district_name
+        data_tests: [not_null]
