@@ -14,6 +14,9 @@ create or replace streamlit RAKTRADAR.ANALYTICS.RAKTRADAR_DASHBOARD
     from @RAKTRADAR.PUBLIC.RAKTRADAR_REPO/branches/main/streamlit/
     main_file = 'streamlit_app.py'
     query_warehouse = RAKTRADAR_WH
+    -- Pin the warehouse runtime: the container runtime needs a compute pool, which
+    -- this (trial) account can't start
+    runtime_name = 'SYSTEM$WAREHOUSE_RUNTIME'
     title = 'RaktRadar'
     comment = 'Blood stock dashboard over RAKTRADAR.ANALYTICS';
 
