@@ -3,3 +3,5 @@ aiohttp
 tenacity
 orjson
 python-dotenv
+snowflake-connector-python
+cryptography
