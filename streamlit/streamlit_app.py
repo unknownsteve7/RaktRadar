@@ -1,4 +1,7 @@
-"""RaktRadar dashboard (Streamlit in Snowflake). Reads ANALYTICS models built by dbt."""
+"""RaktRadar dashboard (Streamlit in Snowflake). Reads ANALYTICS models built by dbt.
+
+The warehouse runtime ships an older Streamlit (< 1.23): no st.column_config or hide_index.
+"""
 from datetime import timedelta
 
 import streamlit as st
@@ -82,12 +85,9 @@ with tab_now:
                                     values="units", aggfunc="sum")
         .reindex(columns=[g for g in GROUP_ORDER if g in groups])
     )
-    grid = grid.loc[grid.min(axis=1).sort_values().index]
-    st.dataframe(
-        grid,
-        use_container_width=True,
-        column_config={g: st.column_config.NumberColumn(g, format="%d") for g in grid.columns},
-    )
+    # Int64 keeps blanks as <NA> without showing decimals (works on older Streamlit runtimes)
+    grid = grid.loc[grid.min(axis=1).sort_values().index].astype("Int64")
+    st.dataframe(grid, use_container_width=True)
 
 # ---------------------------------------------------------------- trend
 with tab_trend:
@@ -117,8 +117,9 @@ with tab_alerts:
         st.success("No new shortages in the latest run.")
     else:
         st.dataframe(
-            alerts[["state_name", "district_name", "blood_group", "previous_units", "reporting_banks"]],
-            use_container_width=True, hide_index=True,
+            alerts[["state_name", "district_name", "blood_group", "previous_units", "reporting_banks"]]
+            .set_index("state_name"),
+            use_container_width=True,
         )
 
 # ---------------------------------------------------------------- data quality
@@ -138,4 +139,4 @@ with tab_quality:
     )
     stale["stale_pct"] = (100 * stale.stale_banks / stale.banks).round(1)
     st.bar_chart(stale.set_index("state_name").stale_pct.sort_values(ascending=False))
-    st.dataframe(stale.sort_values("stale_pct", ascending=False), use_container_width=True, hide_index=True)
+    st.dataframe(stale.sort_values("stale_pct", ascending=False).set_index("state_name"), use_container_width=True)
