@@ -23,10 +23,8 @@ MASTER_URL = "https://eraktkosh.mohfw.gov.in/eraktkoshPortal/eraktkosh/master/al
 STOCK_URL = "https://eraktkosh.mohfw.gov.in/eraktkoshPortal/eraktkosh/blood-availability"
 
 COLLECTION_CONFIG = {
-    "states": [], 
-    "districts": [], 
-    "blood_groups": [],
-    "components": []
+    "states": [],
+    "districts": [],
 }
 
 def fetch_master_all():
@@ -76,42 +74,37 @@ def load_master_data(path="master_data.json"):
     stop=stop_after_attempt(5),
     retry=retry_if_exception_type((aiohttp.ClientError, asyncio.TimeoutError))
 )
-async def fetch_blood_data(state_code, district_code, bg_code, comp_code, comp_name, session, sem):
-    url = STOCK_URL
-    params = {
-        "stateCode": state_code,
-        "districtId": district_code,
-        "componentId": comp_code,
-        "bloodGroupId": bg_code,
-    }
-    
+async def fetch_district(state_code, district_code, session, sem):
+    # Without componentId/bloodGroupId the API returns every component x blood group
+    # per blood bank in one response (verified against the filtered calls)
+    params = {"stateCode": state_code, "districtId": district_code}
+
     async with sem:
-        async with session.get(url, params=params, timeout=15) as resp:
+        async with session.get(STOCK_URL, params=params, timeout=30) as resp:
             resp.raise_for_status()
             data = await resp.json()
 
     fetched_at = datetime.now().isoformat(timespec="seconds")
-    out = []
+    # Keep each blood bank entry as returned; parsing happens in dbt staging
+    return [
+        {"fetched_at": fetched_at, "state_code": state_code, "district_code": district_code, **entry}
+        for entry in data or []
+    ]
 
-    for entry in data or []:
-        comp_info = entry.get("components", {}).get(comp_name, {})
-        out.append({
-            "fetched_at": fetched_at,
-            "state_code": state_code,
-            "district_code": district_code,
-            "blood_group": bg_code,
-            "blood_component": comp_code,
-            "blood_bank": entry.get("hospitalname"),
-            "hospital_code": entry.get("hospitalCode"),
-            "address": entry.get("hospitaladd"),
-            "contact": entry.get("hospitalcontact"),
-            "category": entry.get("hospitalType"),
-            "available": comp_info.get("available_WithQty", ""),
-            "not_available": comp_info.get("not_available_WithQty", ""),
-            "last_updated": entry.get("entrydate"),
-            "bank_type": entry.get("type"),
-        })
-    return out
+async def fetch_all(params_list, session, sem, f):
+    tasks = [asyncio.create_task(fetch_district(sc, dc, session, sem)) for sc, dc in params_list]
+    results = await asyncio.gather(*tasks, return_exceptions=True)
+
+    failed, total = [], 0
+    for params, res in zip(params_list, results):
+        if isinstance(res, Exception):
+            logging.error(f"District {params} failed after retries: {res!r}")
+            failed.append(params)
+            continue
+        for row in res:
+            f.write(orjson.dumps(row) + b'\n')
+            total += 1
+    return total, failed
 
 async def run_collection(output_prefix="blood_data"):
     """
@@ -123,80 +116,51 @@ async def run_collection(output_prefix="blood_data"):
             file_age_days = (time.time() - os.path.getmtime(master_file)) / (60 * 60 * 24)
             if file_age_days > 7:
                 logging.info(f"Master data is {file_age_days:.1f} days old. Refreshing...")
-                state_dict, district_dict, blood_dict, component_dict = save_master_data(master_file)
+                state_dict, district_dict, _, _ = save_master_data(master_file)
             else:
-                state_dict, district_dict, blood_dict, component_dict = load_master_data(master_file)
+                state_dict, district_dict, _, _ = load_master_data(master_file)
                 logging.info("Loaded master data from cache.")
         else:
             raise FileNotFoundError
     except FileNotFoundError:
         logging.info("Master data not found. Fetching and saving...")
-        state_dict, district_dict, blood_dict, component_dict = save_master_data(master_file)
-        
+        state_dict, district_dict, _, _ = save_master_data(master_file)
+
     states_to_fetch = COLLECTION_CONFIG.get("states") or list(state_dict.keys())
-    bgs_to_fetch = COLLECTION_CONFIG.get("blood_groups") or list(blood_dict.keys())
-    comps_to_fetch = COLLECTION_CONFIG.get("components") or list(component_dict.keys())
     districts_to_fetch = COLLECTION_CONFIG.get("districts")
-    
-    # Generate the cartesian product of all API calls needed
-    tasks_params = []
+
+    params_list = []
     for state_name in states_to_fetch:
         state_code = state_dict.get(state_name)
         if not state_code: continue
-        
-        districts = district_dict.get(state_code, {})
-        for district_name, district_code in districts.items():
+
+        for district_name, district_code in district_dict.get(state_code, {}).items():
             if districts_to_fetch and district_name not in districts_to_fetch:
                 continue
-            for bg_name in bgs_to_fetch:
-                bg_code = blood_dict.get(bg_name)
-                if not bg_code: continue
-                    
-                for comp_name in comps_to_fetch:
-                    comp_code = component_dict.get(comp_name)
-                    if not comp_code: continue
-                    
-                    tasks_params.append((state_code, district_code, bg_code, comp_code, comp_name))
-                    
+            params_list.append((state_code, district_code))
+
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     output_file = f"{output_prefix}_{timestamp}.ndjson.gz"
-    
-    total_fetched = 0
-    # Restrict to 50 concurrent connections
-    sem = asyncio.Semaphore(50)
-    
-    logging.info(f"Generated {len(tasks_params)} API call parameters. Starting async fetch...")
-    
-    # Process in chunks of 1000 to prevent overwhelming memory with asyncio tasks
-    chunk_size = 1000
-    
-    async with aiohttp.ClientSession() as session:
-        # Write to GZIP compressed NDJSON file
-        with gzip.open(output_file, 'wb') as f:
-            for i in range(0, len(tasks_params), chunk_size):
-                chunk = tasks_params[i:i+chunk_size]
-                
-                tasks = [
-                    asyncio.create_task(
-                        fetch_blood_data(sc, dc, bgc, cc, cn, session, sem)
-                    ) for sc, dc, bgc, cc, cn in chunk
-                ]
-                
-                results = await asyncio.gather(*tasks, return_exceptions=True)
-                
-                for res in results:
-                    if isinstance(res, Exception):
-                        logging.error(f"Task failed with exception after retries: {res}")
-                        continue
-                        
-                    for row in res:
-                        # Serialize dict to JSON bytes and write newline
-                        f.write(orjson.dumps(row) + b'\n')
-                        total_fetched += 1
-                        
-                logging.info(f"Processed {min(i+chunk_size, len(tasks_params))} / {len(tasks_params)} tasks. Total records extracted: {total_fetched}")
 
-    logging.info(f"Collection complete. Safely extracted {total_fetched} total records to {output_file}.")
+    # One call per district (~800), so a low limit is plenty and easy on the portal
+    sem = asyncio.Semaphore(10)
+    logging.info(f"Fetching {len(params_list)} districts...")
+
+    async with aiohttp.ClientSession() as session:
+        with gzip.open(output_file, 'wb') as f:
+            total, failed = await fetch_all(params_list, session, sem, f)
+
+            # Second pass for districts that failed all retries (usually transient timeouts)
+            if failed:
+                logging.info(f"Retrying {len(failed)} failed districts...")
+                await asyncio.sleep(30)
+                retry_total, failed = await fetch_all(failed, session, sem, f)
+                total += retry_total
+
+    if failed:
+        logging.error(f"{len(failed)} districts still failed after second pass: {failed}")
+    logging.info(f"Collection complete. Extracted {total} blood bank records from "
+                 f"{len(params_list) - len(failed)}/{len(params_list)} districts to {output_file}.")
 
 if __name__ == "__main__":
     asyncio.run(run_collection())
