@@ -6385,3 +6385,125 @@
 2026-10-11 06:52:18,006 - INFO - Processed 109000 / 109340 tasks. Total records extracted: 408300
 2026-10-11 06:52:25,244 - INFO - Processed 109340 / 109340 tasks. Total records extracted: 409232
 2026-10-11 06:52:25,244 - INFO - Collection complete. Safely extracted 409232 total records to blood_data_20261011_061441.ndjson.gz.
+2026-10-12 06:21:52,516 - INFO - Loaded master data from cache.
+2026-10-12 06:21:52,537 - INFO - Generated 109340 API call parameters. Starting async fetch...
+2026-10-12 06:22:15,413 - INFO - Processed 1000 / 109340 tasks. Total records extracted: 3486
+2026-10-12 06:22:37,557 - INFO - Processed 2000 / 109340 tasks. Total records extracted: 12590
+2026-10-12 06:22:59,745 - INFO - Processed 3000 / 109340 tasks. Total records extracted: 21666
+2026-10-12 06:23:22,188 - INFO - Processed 4000 / 109340 tasks. Total records extracted: 33464
+2026-10-12 06:23:44,025 - INFO - Processed 5000 / 109340 tasks. Total records extracted: 36965
+2026-10-12 06:24:05,996 - INFO - Processed 6000 / 109340 tasks. Total records extracted: 37428
+2026-10-12 06:24:27,666 - INFO - Processed 7000 / 109340 tasks. Total records extracted: 37980
+2026-10-12 06:24:49,144 - INFO - Processed 8000 / 109340 tasks. Total records extracted: 38353
+2026-10-12 06:25:11,379 - INFO - Processed 9000 / 109340 tasks. Total records extracted: 39600
+2026-10-12 06:25:33,607 - INFO - Processed 10000 / 109340 tasks. Total records extracted: 41028
+2026-10-12 06:25:55,575 - INFO - Processed 11000 / 109340 tasks. Total records extracted: 43902
+2026-10-12 06:26:17,544 - INFO - Processed 12000 / 109340 tasks. Total records extracted: 45035
+2026-10-12 06:26:39,348 - INFO - Processed 13000 / 109340 tasks. Total records extracted: 45920
+2026-10-12 06:27:01,037 - INFO - Processed 14000 / 109340 tasks. Total records extracted: 47450
+2026-10-12 06:27:22,653 - INFO - Processed 15000 / 109340 tasks. Total records extracted: 49276
+2026-10-12 06:27:44,271 - INFO - Processed 16000 / 109340 tasks. Total records extracted: 50530
+2026-10-12 06:28:06,828 - INFO - Processed 17000 / 109340 tasks. Total records extracted: 56112
+2026-10-12 06:28:28,347 - INFO - Processed 18000 / 109340 tasks. Total records extracted: 57654
+2026-10-12 06:28:50,208 - INFO - Processed 19000 / 109340 tasks. Total records extracted: 59311
+2026-10-12 06:29:12,362 - INFO - Processed 20000 / 109340 tasks. Total records extracted: 61388
+2026-10-12 06:29:34,058 - INFO - Processed 21000 / 109340 tasks. Total records extracted: 63817
+2026-10-12 06:29:55,942 - INFO - Processed 22000 / 109340 tasks. Total records extracted: 65853
+2026-10-12 06:30:18,213 - INFO - Processed 23000 / 109340 tasks. Total records extracted: 70898
+2026-10-12 06:30:39,764 - INFO - Processed 24000 / 109340 tasks. Total records extracted: 73696
+2026-10-12 06:31:01,491 - INFO - Processed 25000 / 109340 tasks. Total records extracted: 78472
+2026-10-12 06:31:23,902 - INFO - Processed 26000 / 109340 tasks. Total records extracted: 84663
+2026-10-12 06:31:45,497 - INFO - Processed 27000 / 109340 tasks. Total records extracted: 86776
+2026-10-12 06:32:07,310 - INFO - Processed 28000 / 109340 tasks. Total records extracted: 90028
+2026-10-12 06:32:29,055 - INFO - Processed 29000 / 109340 tasks. Total records extracted: 92614
+2026-10-12 06:32:51,190 - INFO - Processed 30000 / 109340 tasks. Total records extracted: 97909
+2026-10-12 06:33:13,029 - INFO - Processed 31000 / 109340 tasks. Total records extracted: 103525
+2026-10-12 06:33:34,745 - INFO - Processed 32000 / 109340 tasks. Total records extracted: 107196
+2026-10-12 06:33:57,223 - INFO - Processed 33000 / 109340 tasks. Total records extracted: 111039
+2026-10-12 06:34:19,244 - INFO - Processed 34000 / 109340 tasks. Total records extracted: 112782
+2026-10-12 06:34:40,875 - INFO - Processed 35000 / 109340 tasks. Total records extracted: 113823
+2026-10-12 06:35:02,859 - INFO - Processed 36000 / 109340 tasks. Total records extracted: 114764
+2026-10-12 06:35:24,297 - INFO - Processed 37000 / 109340 tasks. Total records extracted: 115036
+2026-10-12 06:35:45,933 - INFO - Processed 38000 / 109340 tasks. Total records extracted: 116649
+2026-10-12 06:36:07,560 - INFO - Processed 39000 / 109340 tasks. Total records extracted: 118267
+2026-10-12 06:36:29,215 - INFO - Processed 40000 / 109340 tasks. Total records extracted: 119271
+2026-10-12 06:36:51,372 - INFO - Processed 41000 / 109340 tasks. Total records extracted: 122857
+2026-10-12 06:37:14,850 - INFO - Processed 42000 / 109340 tasks. Total records extracted: 135481
+2026-10-12 06:37:37,367 - INFO - Processed 43000 / 109340 tasks. Total records extracted: 140876
+2026-10-12 06:37:59,684 - INFO - Processed 44000 / 109340 tasks. Total records extracted: 144022
+2026-10-12 06:38:21,538 - INFO - Processed 45000 / 109340 tasks. Total records extracted: 148595
+2026-10-12 06:38:43,638 - INFO - Processed 46000 / 109340 tasks. Total records extracted: 155061
+2026-10-12 06:39:05,529 - INFO - Processed 47000 / 109340 tasks. Total records extracted: 165192
+2026-10-12 06:39:27,349 - INFO - Processed 48000 / 109340 tasks. Total records extracted: 168535
+2026-10-12 06:39:49,777 - INFO - Processed 49000 / 109340 tasks. Total records extracted: 172351
+2026-10-12 06:40:12,401 - INFO - Processed 50000 / 109340 tasks. Total records extracted: 174195
+2026-10-12 06:40:51,115 - INFO - Processed 51000 / 109340 tasks. Total records extracted: 178646
+2026-10-12 06:41:13,101 - INFO - Processed 52000 / 109340 tasks. Total records extracted: 179335
+2026-10-12 06:41:34,860 - INFO - Processed 53000 / 109340 tasks. Total records extracted: 180343
+2026-10-12 06:41:57,590 - INFO - Processed 54000 / 109340 tasks. Total records extracted: 182285
+2026-10-12 06:42:21,736 - INFO - Processed 55000 / 109340 tasks. Total records extracted: 183141
+2026-10-12 06:42:46,000 - INFO - Processed 56000 / 109340 tasks. Total records extracted: 187982
+2026-10-12 06:43:46,885 - INFO - Processed 57000 / 109340 tasks. Total records extracted: 191198
+2026-10-12 06:44:26,866 - INFO - Processed 58000 / 109340 tasks. Total records extracted: 200188
+2026-10-12 06:45:05,107 - INFO - Processed 59000 / 109340 tasks. Total records extracted: 208063
+2026-10-12 06:46:59,785 - ERROR - Task failed with exception after retries: RetryError[<Future at 0x7f5d75b300d0 state=finished raised TimeoutError>]
+2026-10-12 06:46:59,795 - INFO - Processed 60000 / 109340 tasks. Total records extracted: 218588
+2026-10-12 06:47:36,792 - INFO - Processed 61000 / 109340 tasks. Total records extracted: 221252
+2026-10-12 06:48:13,797 - INFO - Processed 62000 / 109340 tasks. Total records extracted: 221482
+2026-10-12 06:48:50,861 - INFO - Processed 63000 / 109340 tasks. Total records extracted: 221752
+2026-10-12 06:49:26,073 - INFO - Processed 64000 / 109340 tasks. Total records extracted: 222395
+2026-10-12 06:50:05,835 - INFO - Processed 65000 / 109340 tasks. Total records extracted: 222962
+2026-10-12 06:50:42,961 - INFO - Processed 66000 / 109340 tasks. Total records extracted: 223262
+2026-10-12 06:51:22,856 - INFO - Processed 67000 / 109340 tasks. Total records extracted: 223552
+2026-10-12 06:52:02,073 - INFO - Processed 68000 / 109340 tasks. Total records extracted: 223552
+2026-10-12 06:52:41,767 - INFO - Processed 69000 / 109340 tasks. Total records extracted: 224790
+2026-10-12 06:53:18,766 - INFO - Processed 70000 / 109340 tasks. Total records extracted: 225608
+2026-10-12 06:54:35,800 - INFO - Processed 71000 / 109340 tasks. Total records extracted: 228153
+2026-10-12 06:56:29,747 - ERROR - Task failed with exception after retries: RetryError[<Future at 0x7f5d7759dd90 state=finished raised TimeoutError>]
+2026-10-12 06:56:29,748 - INFO - Processed 72000 / 109340 tasks. Total records extracted: 229236
+2026-10-12 06:57:08,864 - INFO - Processed 73000 / 109340 tasks. Total records extracted: 232465
+2026-10-12 06:59:02,762 - ERROR - Task failed with exception after retries: RetryError[<Future at 0x7f5d75036a50 state=finished raised TimeoutError>]
+2026-10-12 06:59:02,764 - INFO - Processed 74000 / 109340 tasks. Total records extracted: 236548
+2026-10-12 06:59:41,867 - INFO - Processed 75000 / 109340 tasks. Total records extracted: 242931
+2026-10-12 07:00:21,162 - INFO - Processed 76000 / 109340 tasks. Total records extracted: 246967
+2026-10-12 07:00:59,898 - INFO - Processed 77000 / 109340 tasks. Total records extracted: 250426
+2026-10-12 07:01:38,878 - INFO - Processed 78000 / 109340 tasks. Total records extracted: 254144
+2026-10-12 07:03:35,776 - ERROR - Task failed with exception after retries: RetryError[<Future at 0x7f5d75d2bad0 state=finished raised TimeoutError>]
+2026-10-12 07:03:35,782 - INFO - Processed 79000 / 109340 tasks. Total records extracted: 259286
+2026-10-12 07:04:15,788 - INFO - Processed 80000 / 109340 tasks. Total records extracted: 268078
+2026-10-12 07:04:54,850 - INFO - Processed 81000 / 109340 tasks. Total records extracted: 271769
+2026-10-12 07:06:10,124 - INFO - Processed 82000 / 109340 tasks. Total records extracted: 275356
+2026-10-12 07:08:06,750 - ERROR - Task failed with exception after retries: RetryError[<Future at 0x7f5d7507ce10 state=finished raised TimeoutError>]
+2026-10-12 07:08:06,751 - INFO - Processed 83000 / 109340 tasks. Total records extracted: 276471
+2026-10-12 07:08:45,850 - INFO - Processed 84000 / 109340 tasks. Total records extracted: 287321
+2026-10-12 07:09:23,939 - INFO - Processed 85000 / 109340 tasks. Total records extracted: 292696
+2026-10-12 07:11:18,764 - ERROR - Task failed with exception after retries: RetryError[<Future at 0x7f5d7731fbd0 state=finished raised TimeoutError>]
+2026-10-12 07:11:18,765 - INFO - Processed 86000 / 109340 tasks. Total records extracted: 296421
+2026-10-12 07:11:57,898 - INFO - Processed 87000 / 109340 tasks. Total records extracted: 301322
+2026-10-12 07:12:35,728 - INFO - Processed 88000 / 109340 tasks. Total records extracted: 306041
+2026-10-12 07:13:15,821 - INFO - Processed 89000 / 109340 tasks. Total records extracted: 315390
+2026-10-12 07:13:54,877 - INFO - Processed 90000 / 109340 tasks. Total records extracted: 319058
+2026-10-12 07:15:13,120 - INFO - Processed 91000 / 109340 tasks. Total records extracted: 323936
+2026-10-12 07:15:51,851 - INFO - Processed 92000 / 109340 tasks. Total records extracted: 330430
+2026-10-12 07:16:30,820 - INFO - Processed 93000 / 109340 tasks. Total records extracted: 332871
+2026-10-12 07:17:09,862 - INFO - Processed 94000 / 109340 tasks. Total records extracted: 334036
+2026-10-12 07:19:04,762 - ERROR - Task failed with exception after retries: RetryError[<Future at 0x7f5d75dd2110 state=finished raised TimeoutError>]
+2026-10-12 07:19:04,763 - INFO - Processed 95000 / 109340 tasks. Total records extracted: 338062
+2026-10-12 07:19:43,864 - INFO - Processed 96000 / 109340 tasks. Total records extracted: 343893
+2026-10-12 07:20:23,726 - INFO - Processed 97000 / 109340 tasks. Total records extracted: 346903
+2026-10-12 07:21:01,881 - INFO - Processed 98000 / 109340 tasks. Total records extracted: 351193
+2026-10-12 07:21:41,780 - INFO - Processed 99000 / 109340 tasks. Total records extracted: 355517
+2026-10-12 07:22:58,242 - INFO - Processed 100000 / 109340 tasks. Total records extracted: 362859
+2026-10-12 07:24:13,072 - INFO - Processed 101000 / 109340 tasks. Total records extracted: 367007
+2026-10-12 07:24:52,800 - INFO - Processed 102000 / 109340 tasks. Total records extracted: 372192
+2026-10-12 07:25:32,490 - INFO - Processed 103000 / 109340 tasks. Total records extracted: 380993
+2026-10-12 07:26:10,824 - INFO - Processed 104000 / 109340 tasks. Total records extracted: 388804
+2026-10-12 07:27:28,032 - INFO - Processed 105000 / 109340 tasks. Total records extracted: 394922
+2026-10-12 07:29:21,747 - ERROR - Task failed with exception after retries: RetryError[<Future at 0x7f5d773b7190 state=finished raised TimeoutError>]
+2026-10-12 07:29:21,751 - INFO - Processed 106000 / 109340 tasks. Total records extracted: 397836
+2026-10-12 07:29:57,812 - INFO - Processed 107000 / 109340 tasks. Total records extracted: 400935
+2026-10-12 07:30:54,352 - INFO - Processed 108000 / 109340 tasks. Total records extracted: 404996
+2026-10-12 07:31:30,042 - INFO - Processed 109000 / 109340 tasks. Total records extracted: 408937
+2026-10-12 07:33:09,750 - ERROR - Task failed with exception after retries: RetryError[<Future at 0x7f5d75d7a810 state=finished raised TimeoutError>]
+2026-10-12 07:33:09,751 - INFO - Processed 109340 / 109340 tasks. Total records extracted: 409867
+2026-10-12 07:33:09,751 - INFO - Collection complete. Safely extracted 409867 total records to blood_data_20261012_062152.ndjson.gz.
