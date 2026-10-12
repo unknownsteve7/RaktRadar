@@ -1,0 +1,27 @@
+version: 2
+
+models:
+  - name: stg_blood_stock
+    description: >
+      Blood stock per run x blood bank x component x blood group, parsed from the
+      raw API strings. is_stale marks banks that have not updated within
+      stale_after_days, where "not available" is likely unreported.
+    columns:
+      - name: run_id
+        data_tests: [not_null]
+      - name: fetched_at
+        data_tests: [not_null]
+      - name: hospital_code
+        data_tests: [not_null]
+      - name: component_name
+        data_tests: [not_null]
+      - name: blood_group
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-', 'OH+', 'OH-']
+      - name: units
+        data_tests: [not_null]
+      - name: is_stale
+        data_tests: [not_null]

@@ -1,0 +1,14 @@
+version: 2
+
+sources:
+  - name: raw
+    database: RAKTRADAR
+    schema: RAW
+    tables:
+      - name: blood_stock
+        description: One row per blood bank per collection run; raw API entry in raw_variant.
+        config:
+          loaded_at_field: _loaded_at
+          freshness:
+            warn_after: {count: 26, period: hour}
+            error_after: {count: 50, period: hour}

@@ -1,0 +1,14 @@
+# No secrets here: everything comes from env vars (GitHub secrets in CI)
+raktradar:
+  target: prod
+  outputs:
+    prod:
+      type: snowflake
+      account: "{{ env_var('SNOWFLAKE_ACCOUNT') }}"
+      user: "{{ env_var('DBT_SNOWFLAKE_USER', 'RAKT_TRANSFORMER_SVC') }}"
+      private_key: "{{ env_var('SNOWFLAKE_PRIVATE_KEY') }}"
+      role: RAKT_TRANSFORMER
+      warehouse: RAKTRADAR_WH
+      database: RAKTRADAR
+      schema: ANALYTICS
+      threads: 4
