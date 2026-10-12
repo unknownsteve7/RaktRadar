@@ -53,7 +53,8 @@ def load_file(cur, path):
     cur.execute(f"PUT '{file_url}' {stage_path} AUTO_COMPRESS = FALSE OVERWRITE = FALSE")
     logging.info(f"PUT {path} -> {stage_path}: {cur.fetchall()}")
 
-    # Snowflake tracks loaded files for 64 days, so re-running COPY won't duplicate rows
+    # FILES limits COPY to the file just uploaded. Without it, COPY scans the whole date
+    # folder and reloads anything whose load history is gone (e.g. after a TRUNCATE)
     cur.execute(f"""
         COPY INTO {TABLE} (raw_variant, _run_id, _source_file, _loaded_at)
         FROM (
@@ -63,6 +64,7 @@ def load_file(cur, path):
                    CURRENT_TIMESTAMP()
             FROM {stage_path}
         )
+        FILES = ('{os.path.basename(path)}')
         FILE_FORMAT = (FORMAT_NAME = 'RAKTRADAR.RAW.NDJSON_GZ')
     """)
     for row in cur.fetchall():
