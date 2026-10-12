@@ -6,46 +6,100 @@ Early-warning analytics for blood stock shortages across India, built on live, c
 
 Blood banks in India run short of specific blood groups in specific regions, and it's usually only visible once it's already urgent. If there's a detectable pattern leading up to a shortage — a region draining faster than it's replenished, a recurring dip tied to certain days or festivals — that's something worth surfacing before it becomes a crisis, not after.
 
+## Architecture
+
+```mermaid
+flowchart LR
+    API["eRaktKosh API<br/>781 districts"] -->|async Python<br/>~1.5 min| NDJSON["NDJSON.gz"]
+    NDJSON -->|PUT| STAGE["@RAKT_STAGE<br/>internal stage"]
+    NDJSON -.->|14-day backup| ART["Actions artifact"]
+    STAGE -->|COPY INTO| RAW["RAW.BLOOD_STOCK<br/>VARIANT"]
+    RAW -->|dbt| STG["stg_blood_stock<br/>stg_blood_banks"]
+    STG --> SNAP["snap_blood_bank<br/>SCD2 snapshot"]
+    SNAP --> DIM["dim_blood_bank"]
+    STG --> FCT["fct_stock_snapshot<br/>incremental"]
+    DIM --> FCT
+```
+
+Everything runs daily in **one GitHub Actions workflow** (06:00 UTC): extract → stage → `COPY` → `dbt build` (snapshot, models, 24 tests). No local machine involved.
+
 ## Data Source
 
 [eRaktKosh](https://eraktkosh.mohfw.gov.in) — India's national blood stock tracking portal, run by the Ministry of Health and Family Welfare (C-DAC). Public, no authentication required.
 
-Mid-development, the live portal turned out to have two versions running in parallel: a legacy jQuery/DataTables site (`.../BLDAHIMS/bloodbank/...`) and a newer React/Ant Design "Beta" rebuild (`.../eraktkoshPortal/...`). This project targets the **Beta API** — cleaner structured JSON, no HTML embedded in response fields, and noticeably fresher `entrydate` timestamps on records during side-by-side testing.
+The live portal runs two versions in parallel: a legacy jQuery/DataTables site (`.../BLDAHIMS/bloodbank/...`) and a newer React/Ant Design "Beta" rebuild (`.../eraktkoshPortal/...`). This project targets the **Beta API** — cleaner structured JSON, no HTML embedded in response fields, and noticeably fresher `entrydate` timestamps during side-by-side testing.
 
 **Endpoints in use:**
-- `POST /eraktkoshPortal/eraktkosh/master/all` — reference data: states, nested districts, blood groups, blood components. Static; cached locally, refreshed weekly rather than on every run.
-- `GET /eraktkoshPortal/eraktkosh/blood-availability` — live stock per state/district/blood group/component combination.
+- `POST /eraktkoshPortal/eraktkosh/master/all` — reference data: states, nested districts, blood groups, components. Cached in `master_data.json`, refreshed weekly.
+- `GET /eraktkoshPortal/eraktkosh/blood-availability` — live stock. Called **once per district**; the response carries every component × blood group per blood bank.
+
+## Data Model
+
+| Object | Type | Grain |
+|---|---|---|
+| `RAW.BLOOD_STOCK` | table (`VARIANT`) | blood bank × run, raw API entry + `_run_id`, `_source_file`, `_loaded_at` |
+| `stg_blood_stock` | view | run × blood bank × component × blood group (~405k rows/run) |
+| `stg_blood_banks` | view | blood bank, latest run |
+| `snap_blood_bank` | dbt snapshot | blood bank version (check strategy on name, address, contact, category, type, location) |
+| `dim_blood_bank` | table | blood bank version (SCD2) |
+| `fct_stock_snapshot` | incremental | run × blood bank × component × blood group, keyed to the dim version valid for that run |
+
+**Snowflake layout:** `RAKTRADAR` database with `RAW` and `ANALYTICS` schemas, an X-Small warehouse with 60s auto-suspend, and three roles — `RAKT_LOADER` (writes `RAW`), `RAKT_TRANSFORMER` (reads `RAW`, builds `ANALYTICS`), `RAKT_REPORTER` (reads `ANALYTICS`). CI authenticates as key-pair service users.
 
 ## Status
 
-**Infrastructure phase complete, collection not yet running.** Both core data-pulling functions are built and verified against manually-confirmed ground truth (state/district/blood-group/component codes cross-checked directly against the live site's DOM). No live time-series data has been collected yet — that only starts once the automated pipeline is deployed and left running for several weeks.
-
-- [x] Reverse-engineer and verify the reference-data endpoint (`master/all`)
-- [x] Reverse-engineer and verify the stock endpoint (`blood-availability`)
-- [x] Build `run_collection.py` — the full state × district × blood group × component loop with append-per-call persistence, logging, and failure isolation
-- [x] Deploy as a scheduled GitHub Actions workflow (daily; independent of any local machine)
-- [x] Accumulate several weeks of real history
-- [ ] Descriptive analysis — which regions/blood groups run chronically short vs. surplus
-- [ ] Diagnostic analysis — weekday effects, festival correlation, handling stale/unreported entries
-- [ ] Stretch goal — early-warning/trend flag, if data quality supports it
-- [ ] Streamlit dashboard
+- [x] Reverse-engineer and verify the reference-data and stock endpoints
+- [x] Async extractor (`aiohttp`, `tenacity` retries, second pass for failed districts) writing gzipped NDJSON
+- [x] Daily GitHub Actions schedule, independent of any local machine
+- [x] Snowflake RBAC, internal stage, file format and raw table; SQL deployed from this repo via Snowflake's Git integration
+- [x] Load step: `PUT` + `COPY INTO`, with the raw file kept as a 14-day artifact
+- [x] dbt staging, SCD2 blood bank dimension, incremental stock fact, 24 data tests
+- [x] CI on every PR: `ruff`, `sqlfluff`, `dbt parse`
+- [ ] Streamlit in Snowflake dashboard (district-level availability map)
+- [ ] Telegram alerts for critical shortages, filtered on stale reporting
+- [ ] Descriptive and diagnostic analysis — chronic shortages, weekday and festival effects
 
 ## Notable Technical Decisions
 
-A few things worth recording while they're fresh, since some of this shaped real design choices:
+**Extraction**
+- **One call per district, not per blood group × component.** Omitting `componentId`/`bloodGroupId` returns everything for each blood bank. Verified against all 140 filtered calls for 20 random districts (identical hospitals, cells and values) before switching: **109,340 calls → 781, 40–80 min → ~1.5 min**, and far less load on a government server.
+- **Dropped the census-2011 reference dataset.** It undercounted Delhi (9 districts vs. the current 11) and used a different code scheme than eRaktKosh's internal IDs. Reference data now comes from the portal's own `master/all` endpoint, cross-validated against the site's DOM.
+- **Zero-padding mismatch.** The old reference source stored district codes as `"098"`; the API expects `"98"`. Fixed at the point of use, not as a blanket rule, since state codes needed the opposite treatment.
+- **`master/all` requires a JSON body.** A form-encoded POST returns `415 Unsupported Media Type`.
 
-- **Dropped the original census-2011-based reference dataset.** It undercounted Delhi (9 districts vs. the current 11 — Delhi was reorganized in 2012) and used a different code scheme than eRaktKosh's own internal IDs entirely for some fields. Reference data (states, districts, blood group/component codes) is now sourced live from the portal's own `master/all` endpoint instead, and cross-validated against values read directly off the site's DOM.
-- **Zero-padding mismatch.** The old reference source stored district codes as zero-padded strings (`"098"`); the API expects unpadded values (`"98"`) for codes under 100. Fixed via explicit `int()` casting at the point of use — but this isn't applied as a blanket rule elsewhere, since other fields (like state codes) turned out to need the opposite treatment.
-- **`master/all` requires an explicit JSON content type.** A form-encoded POST body returns `415 Unsupported Media Type`; fixed by passing `json=` instead of `data=` in `requests`.
-- **Stale timestamps are a real signal, not noise.** Some blood bank entries carry `entrydate` values months old. A "Not Available" status on a stale record likely means "unreported," not "confirmed empty" — this needs explicit handling in the eventual analysis, not just a blanket true/false read.
-- **`hospitalCode` (not blood bank name) is the correct join key** across time-series pulls — names have inconsistent capitalization/spacing across records; the numeric hospital code is stable.
+**Loading**
+- **Git is not the data store.** Raw files go to a Snowflake internal stage; the repo only holds code. (An earlier version committed data and silently lost ~11 days when the output filename changed — the artifact backup exists because of that.)
+- **`COPY` names the exact file it loads** (`FILES = (...)`). `TRUNCATE` clears Snowflake's load history, so a folder-wide `COPY` would reload old files.
+
+**Modelling**
+- **ELT, not ETL.** The raw API entry lands untouched in a `VARIANT`; all parsing lives in dbt, so parsing rules can change and be re-applied to history.
+- **The portal's stock strings need cleaning.** Stock arrives as `"A-Ve : 5, AB+Ve : 20"` with label variants (`A -ve`, `Oh+VE`), normalised to `A-`, `OH+`, etc. Some cells are listed twice with *different* counts (separate stock entries), so they're summed rather than de-duplicated.
+- **Stale timestamps are a signal, not noise.** Some banks carry `entrydate` values months old; `is_stale` flags anything older than 7 days, because "not available" there likely means "unreported", not "empty".
+- **SCD2 versions are bounded by `run_id`, not snapshot timestamps.** The snapshot runs after the load, so `dbt_valid_from` is always later than the fetch it describes; joining on it would attach each run to the previous version.
+- **`hospitalCode` is the join key**, not the blood bank name — names vary in capitalisation and spacing across records.
 
 ## Tech Stack
 
-Python, `requests` — GitHub Actions (scheduling) — pandas (analysis, planned) — Streamlit (dashboard, planned)
+| Layer | Tools |
+|---|---|
+| Extraction | Python 3.11, `aiohttp`, `tenacity`, `orjson` |
+| Orchestration | GitHub Actions (cron + `workflow_dispatch`) |
+| Warehouse | Snowflake (internal stage, `VARIANT`, RBAC, Git integration) |
+| Transformation | dbt Core + dbt-snowflake (snapshots, incremental models, tests) |
+| CI | `ruff`, `sqlfluff`, `dbt parse` |
+| Planned | Streamlit in Snowflake, Telegram Bot API |
 
+## Repository Layout
 
-`master_data.json` is cached locally after the first run and reused — it isn't refetched on every collection cycle, since the underlying reference data doesn't change day to day.
+```
+python/data_extraction.py      # async extractor -> blood_data_<run>.ndjson.gz
+python/load_to_snowflake.py    # PUT + COPY INTO RAW.BLOOD_STOCK
+dbt/                           # staging, snapshot, marts, tests
+snowflake_setup.sql            # warehouse, schemas, roles, stage, raw table
+snowflake_service_user.sql     # key-pair service users for CI
+snowflake_git_integration.sql  # lets Snowflake run SQL straight from this repo
+.github/workflows/             # daily pipeline + PR CI
+```
 
 ## Author
 

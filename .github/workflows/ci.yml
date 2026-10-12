@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  lint-python:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install ruff==0.17.0
+      - name: ruff
+        run: ruff check python/ --output-format github
+
+  dbt:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: dbt
+    # parse/lint need no warehouse; dummy values satisfy env_var() in profiles.yml
+    env:
+      SNOWFLAKE_ACCOUNT: ci
+      SNOWFLAKE_PRIVATE_KEY: ci
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install dbt-snowflake==1.12.2 sqlfluff==4.4.0
+      - name: dbt parse
+        run: dbt parse --profiles-dir .
+      - name: sqlfluff
+        run: sqlfluff lint models tests --format github-annotation-native

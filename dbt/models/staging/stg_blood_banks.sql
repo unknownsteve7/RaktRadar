@@ -4,7 +4,7 @@ select
     raw_variant:hospitalCode::string           as hospital_code,
     trim(raw_variant:hospitalname::string)     as blood_bank_name,
     trim(raw_variant:hospitaladd::string)      as address,
-    trim(raw_variant:hospitalcontact::string)  as contact,
+    trim(raw_variant:hospitalcontact::string)  as contact,  -- noqa: RF04
     trim(raw_variant:hospitalType::string)     as hospital_category,
     trim(raw_variant:type::string)             as bank_type,
     raw_variant:state_code::string             as state_code,
