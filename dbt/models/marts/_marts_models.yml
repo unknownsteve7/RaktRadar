@@ -27,3 +27,9 @@ models:
                 field: blood_bank_sk
       - name: units
         data_tests: [not_null]
+
+  - name: alert_critical_shortages
+    description: >
+      New red-cell shortages (Packed Red Blood Cells + Whole Blood) per district x blood group:
+      every non-stale bank now reports 0 units, and the same banks had stock in the previous run.
+      Feeds the daily shortage email.
