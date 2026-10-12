@@ -62,3 +62,15 @@ jobs:
             git commit -m "Automated collection: $(date -u +'%Y-%m-%d %H:%M:%S UTC')"
             git push
           fi
+
+      # Runs after the commit so a model or test failure never blocks saving the data
+      - name: Install dbt
+        run: pip install dbt-snowflake==1.12.2
+
+      - name: dbt build
+        working-directory: dbt
+        env:
+          SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
+          SNOWFLAKE_PRIVATE_KEY: ${{ secrets.SNOWFLAKE_PRIVATE_KEY }}
+          DBT_SNOWFLAKE_USER: RAKT_TRANSFORMER_SVC
+        run: dbt build --profiles-dir .
