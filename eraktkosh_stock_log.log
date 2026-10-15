@@ -6685,3 +6685,11 @@
 2026-10-14 05:16:34,767 - INFO - PUT blood_data_20261014_051453.ndjson.gz -> @RAKTRADAR.RAW.RAKT_STAGE/2026/10/14/: [('blood_data_20261014_051453.ndjson.gz', 'blood_data_20261014_051453.ndjson.gz', 974849, 974864, 'GZIP', 'GZIP', 'UPLOADED', '')]
 2026-10-14 05:16:38,115 - INFO - COPY result: ('rakt_stage/2026/10/14/blood_data_20261014_051453.ndjson.gz', 'LOADED', 4700, 4700, 1, 0, None, None, None, None)
 2026-10-14 05:16:38,616 - INFO - Loaded 1 file(s) into RAKTRADAR.RAW.BLOOD_STOCK.
+2026-10-15 05:01:42,428 - INFO - Loaded master data from cache.
+2026-10-15 05:01:42,428 - INFO - Fetching 781 districts...
+2026-10-15 05:03:21,502 - INFO - Collection complete. Extracted 4706 blood bank records from 781/781 districts to blood_data_20261015_050142.ndjson.gz.
+2026-10-15 05:03:23,199 - INFO - Snowflake Connector for Python Version: 4.8.0, Python Version: 3.11.17, Platform: Linux-6.17.0-1022-azure-x86_64-with-glibc2.39
+2026-10-15 05:03:23,199 - INFO - Connecting to GLOBAL Snowflake domain
+2026-10-15 05:03:27,640 - INFO - PUT blood_data_20261015_050142.ndjson.gz -> @RAKTRADAR.RAW.RAKT_STAGE/2026/10/15/: [('blood_data_20261015_050142.ndjson.gz', 'blood_data_20261015_050142.ndjson.gz', 975533, 975536, 'GZIP', 'GZIP', 'UPLOADED', '')]
+2026-10-15 05:03:30,030 - INFO - COPY result: ('rakt_stage/2026/10/15/blood_data_20261015_050142.ndjson.gz', 'LOADED', 4706, 4706, 1, 0, None, None, None, None)
+2026-10-15 05:03:30,509 - INFO - Loaded 1 file(s) into RAKTRADAR.RAW.BLOOD_STOCK.
