@@ -7885,3 +7885,39 @@
 2026-11-17 08:22:06,569 - INFO - Logout completed successfully
 2026-11-17 08:22:06,569 - INFO - Connection closed successfully
 2026-11-17 08:22:06,569 - INFO - Loaded 1 file(s) into RAKTRADAR.RAW.BLOOD_STOCK.
+2026-11-18 07:51:09,817 - INFO - Loaded master data from cache.
+2026-11-18 07:51:09,817 - INFO - Fetching 781 districts...
+2026-11-18 07:52:45,908 - INFO - Collection complete. Extracted 4746 blood bank records from 781/781 districts to blood_data_20261118_075109.ndjson.gz.
+2026-11-18 07:52:47,108 - INFO - outbound HTTP call method=PUT host=169.254.169.254 path=/latest/api/token
+2026-11-18 07:52:47,114 - INFO - HTTP response status=411
+2026-11-18 07:52:47,115 - WARNING - failed to load region from IMDS err=failed to load IMDS session token: service error: invalid token (FailedToLoadToken(FailedToLoadToken { source: ServiceError(ServiceError { source: TokenError { kind: InvalidToken }, raw: Response { status: StatusCode(411), headers: Headers { headers: {"content-type": HeaderValue { _private: H1("text/html; charset=us-ascii") }, "date": HeaderValue { _private: H1("Wed, 18 Nov 2026 07:52:46 GMT") }, "connection": HeaderValue { _private: H1("close") }, "content-length": HeaderValue { _private: H1("344") }} }, body: SdkBody { inner: Once(Some(b"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\"\"http://www.w3.org/TR/html4/strict.dtd\">\r\n<HTML><HEAD><TITLE>Length Required</TITLE>\r\n<META HTTP-EQUIV=\"Content-Type\" Content=\"text/html; charset=us-ascii\"></HEAD>\r\n<BODY><h2>Length Required</h2>\r\n<hr><p>HTTP Error 411. The request must be chunked or have a content length.</p>\r\n</BODY></HTML>\r\n")), retryable: true }, extensions: Extensions { extensions_02x: Extensions, extensions_1x: Extensions } } }) }))
+2026-11-18 07:52:47,116 - INFO - outbound HTTP call method=PUT host=169.254.169.254 path=/latest/api/token
+2026-11-18 07:52:47,117 - INFO - HTTP response status=411
+2026-11-18 07:52:47,118 - WARNING - failed to load region from IMDS err=failed to load IMDS session token: service error: invalid token (FailedToLoadToken(FailedToLoadToken { source: ServiceError(ServiceError { source: TokenError { kind: InvalidToken }, raw: Response { status: StatusCode(411), headers: Headers { headers: {"content-type": HeaderValue { _private: H1("text/html; charset=us-ascii") }, "date": HeaderValue { _private: H1("Wed, 18 Nov 2026 07:52:46 GMT") }, "connection": HeaderValue { _private: H1("close") }, "content-length": HeaderValue { _private: H1("344") }} }, body: SdkBody { inner: Once(Some(b"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\"\"http://www.w3.org/TR/html4/strict.dtd\">\r\n<HTML><HEAD><TITLE>Length Required</TITLE>\r\n<META HTTP-EQUIV=\"Content-Type\" Content=\"text/html; charset=us-ascii\"></HEAD>\r\n<BODY><h2>Length Required</h2>\r\n<hr><p>HTTP Error 411. The request must be chunked or have a content length.</p>\r\n</BODY></HTML>\r\n")), retryable: true }, extensions: Extensions { extensions_02x: Extensions, extensions_1x: Extensions } } }) }))
+2026-11-18 07:52:47,120 - INFO - outbound HTTP call method=PUT host=169.254.169.254 path=/latest/api/token
+2026-11-18 07:52:47,121 - INFO - HTTP response status=411
+2026-11-18 07:52:47,122 - WARNING - provider failed to provide credentials provider=Ec2InstanceMetadata error=an error occurred while loading credentials: failed to load IMDS session token: service error: invalid token (ProviderError(ProviderError { source: FailedToLoadToken(FailedToLoadToken { source: ServiceError(ServiceError { source: TokenError { kind: InvalidToken }, raw: Response { status: StatusCode(411), headers: Headers { headers: {"content-type": HeaderValue { _private: H1("text/html; charset=us-ascii") }, "date": HeaderValue { _private: H1("Wed, 18 Nov 2026 07:52:46 GMT") }, "connection": HeaderValue { _private: H1("close") }, "content-length": HeaderValue { _private: H1("344") }} }, body: SdkBody { inner: Once(Some(b"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\"\"http://www.w3.org/TR/html4/strict.dtd\">\r\n<HTML><HEAD><TITLE>Length Required</TITLE>\r\n<META HTTP-EQUIV=\"Content-Type\" Content=\"text/html; charset=us-ascii\"></HEAD>\r\n<BODY><h2>Length Required</h2>\r\n<hr><p>HTTP Error 411. The request must be chunked or have a content length.</p>\r\n</BODY></HTML>\r\n")), retryable: true }, extensions: Extensions { extensions_02x: Extensions, extensions_1x: Extensions } } }) }) }))
+2026-11-18 07:52:47,124 - WARNING - Proxy configuration: using environment variable proxy settings
+2026-11-18 07:52:47,124 - INFO - Starting Snowflake login process
+2026-11-18 07:52:47,124 - INFO - Making Snowflake login request login_url=https://ZABGYTC-XJ78708.snowflakecomputing.com/session/v1/login-request
+2026-11-18 07:52:47,126 - INFO - outbound HTTP call method=POST path=/session/v1/login-request attempt=1
+2026-11-18 07:52:48,123 - INFO - Snowflake login completed successfully session_id=4447928263520262 session_validity_secs=3599 master_validity_secs=14399 session_params_count=52 server_version=10.42.101
+2026-11-18 07:52:48,155 - INFO - Executing sync query request_id=0d98b37c-581a-4935-9384-41fc6f38be06
+2026-11-18 07:52:48,155 - INFO - outbound HTTP call method=POST path=/queries/v1/query-request attempt=1
+2026-11-18 07:52:49,446 - WARNING - Proxy configuration: using environment variable proxy settings
+2026-11-18 07:52:49,449 - INFO - outbound HTTP call method=HEAD path=azure-transfer attempt=1
+2026-11-18 07:52:50,595 - INFO - HTTP response status=404
+2026-11-18 07:52:50,595 - INFO - outbound HTTP call method=PUT path=3kuegpsfcb1stg.blob.core.windows.net/stageszze0bb04ae-2f95-45b3-9cf6-529ff84463de/2026/11/18/blood_data_20261118_075109.ndjson.gz attempt=1
+2026-11-18 07:52:51,881 - INFO - HTTP response status=201
+2026-11-18 07:52:51,881 - INFO - PUT blood_data_20261118_075109.ndjson.gz -> @RAKTRADAR.RAW.RAKT_STAGE/2026/11/18/: [('blood_data_20261118_075109.ndjson.gz', 'blood_data_20261118_075109.ndjson.gz', 633061, 633072, 'GZIP', 'GZIP', 'UPLOADED', '')]
+2026-11-18 07:52:51,882 - INFO - Executing sync query request_id=b36a5916-3363-4f67-8eb0-2f7a61623854
+2026-11-18 07:52:51,882 - INFO - outbound HTTP call method=POST path=/queries/v1/query-request attempt=1
+2026-11-18 07:52:54,835 - INFO - COPY result: ('rakt_stage/2026/11/18/blood_data_20261118_075109.ndjson.gz', 'LOADED', 4746, 4746, 1, 0, None, None, None, None)
+2026-11-18 07:52:54,836 - INFO - Closing connection
+2026-11-18 07:52:54,836 - INFO - Sending logout: auto-detection found no running async queries
+2026-11-18 07:52:55,506 - INFO - Initiating session logout
+2026-11-18 07:52:55,507 - INFO - outbound HTTP call method=POST path=/session attempt=1
+2026-11-18 07:52:55,735 - INFO - Session logout completed successfully
+2026-11-18 07:52:55,735 - INFO - Logout completed successfully
+2026-11-18 07:52:55,735 - INFO - Connection closed successfully
+2026-11-18 07:52:55,735 - INFO - Loaded 1 file(s) into RAKTRADAR.RAW.BLOOD_STOCK.
