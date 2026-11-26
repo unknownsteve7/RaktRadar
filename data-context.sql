@@ -78,7 +78,9 @@ select
     d.state_name as state_name,
     count(distinct f.hospital_code) as total_banks,
     count(distinct case when f.is_stale then f.hospital_code end) as stale_banks,
-    round(100.0 * stale_banks / total_banks, 2) as stale_pct
+    round(100.0 * stale_banks / total_banks, 2) as stale_pct,
+    case when stale_pct >=50 then 'Worst'
+    when stale_pct <=10 then 'Best' else 'Average' end as stale_status
 from analytics.fct_stock_snapshot as f
 left join states as d
     on f.state_code = d.state_code
