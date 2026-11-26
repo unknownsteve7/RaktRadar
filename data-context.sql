@@ -55,8 +55,17 @@ group by status ORDER BY count(*) desc;
 --Blood units, including their 
 --blood_bank_name, hospital_category,
 -- and district_name
+
+with distinct_stock as
+(
+select distinct blood_bank_sk, hospital_code,blood_group,units from analytics.fct_stock_snapshot where run_id = (select max(run_id) 
+from analytics.fct_stock_snapshot) and component_name = 'Whole Blood'
+)
+
 select b.blood_bank_name,b.hospital_code,b.hospital_category, d.district_name, f.blood_group, sum(f.units) as Total_whole_blood_units from analytics.dim_blood_bank b left join analytics.ref_districts d on b.district_code = d.district_code
-left join analytics.fct_stock_snapshot f 
+inner join distinct_stock f 
 on b.hospital_code = f.hospital_code 
-where b.bank_type = 'Blood Bank' and f.component_name = 'Whole Blood' and f.run_id = (select max(run_id) from analytics.fct_stock_snapshot)
-group by b.blood_bank_name,b.hospital_category,b.hospital_code, d.district_name, f.blood_group order by Total_whole_blood_units desc limit 10;
+where b.bank_type = 'Blood Bank'
+group by b.blood_bank_name,b.hospital_category,b.hospital_code, d.district_name, f.blood_group 
+order by Total_whole_blood_units desc limit 10;
+
