@@ -48,3 +48,15 @@ WITH bank_status as
 SELECT status, count(*) FROM bank_status
 group by status ORDER BY count(*) desc;
 
+
+
+-- For the latest run, show the top 
+--10 blood banks by total Whole 
+--Blood units, including their 
+--blood_bank_name, hospital_category,
+-- and district_name
+select b.blood_bank_name,b.hospital_code,b.hospital_category, d.district_name, f.blood_group, sum(f.units) as Total_whole_blood_units from analytics.dim_blood_bank b left join analytics.ref_districts d on b.district_code = d.district_code
+left join analytics.fct_stock_snapshot f 
+on b.hospital_code = f.hospital_code 
+where b.bank_type = 'Blood Bank' and f.component_name = 'Whole Blood' and f.run_id = (select max(run_id) from analytics.fct_stock_snapshot)
+group by b.blood_bank_name,b.hospital_category,b.hospital_code, d.district_name, f.blood_group order by Total_whole_blood_units desc limit 10;
