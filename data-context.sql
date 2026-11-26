@@ -69,3 +69,19 @@ where b.bank_type = 'Blood Bank'
 group by b.blood_bank_name,b.hospital_category,b.hospital_code, d.district_name, f.blood_group 
 order by Total_whole_blood_units desc limit 10;
 
+
+with states as (
+    select distinct state_code, state_name
+    from analytics.ref_districts
+)
+select
+    d.state_name as state_name,
+    count(distinct f.hospital_code) as total_banks,
+    count(distinct case when f.is_stale then f.hospital_code end) as stale_banks,
+    round(100.0 * stale_banks / total_banks, 2) as stale_pct
+from analytics.fct_stock_snapshot as f
+left join states as d
+    on f.state_code = d.state_code
+where f.run_id = (select max(run_id) from analytics.fct_stock_snapshot)
+group by d.state_name
+order by stale_pct desc;
