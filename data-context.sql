@@ -29,3 +29,22 @@ from ANALYTICS.AGG_DISTRICT_STOCK)
 GROUP BY STATE_NAME
 HAVING total_units > 10000 
 ORDER BY total_units DESC  ;
+
+
+-- Categorize every blood bank in fct_stock_snapshot as 'Fresh'
+-- (days_since_update <= 7), 'Stale' (> 7), or 'Missing' 
+--(last_updated_at IS NULL), and count how many banks fall into each bucket.
+
+WITH bank_status as
+(
+    SELECT
+    CASE 
+        WHEN DAYS_SINCE_UPDATE <= 7 THEN 'Fresh'
+        WHEN DAYS_SINCE_UPDATE > 7 THEN 'Stale'
+        ELSE  'Missing'
+    END as status
+    FROM FCT_STOCK_SNAPSHOT
+)
+SELECT status, count(*) FROM bank_status
+group by status ORDER BY count(*) desc;
+
