@@ -87,3 +87,24 @@ left join states as d
 where f.run_id = (select max(run_id) from analytics.fct_stock_snapshot)
 group by d.state_name
 order by stale_pct desc;
+
+
+
+
+with daily_national as (
+    select
+        snapshot_date,
+        sum(units) as total_units
+    from analytics.agg_district_stock
+    where component_name = 'Packed Red Blood Cells'
+      and run_id in (
+          select max(run_id)
+          from analytics.agg_district_stock
+          group by snapshot_date
+      )
+    group by snapshot_date
+)
+select
+    round(avg(case when dayofweekiso(snapshot_date) between 1 and 5 then total_units end), 0) as weekday_avg_units,
+    round(avg(case when dayofweekiso(snapshot_date) in (6, 7) then total_units end), 0) as weekend_avg_units
+from daily_national;
