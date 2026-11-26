@@ -8173,3 +8173,39 @@
 2026-11-25 09:01:39,473 - INFO - Logout completed successfully
 2026-11-25 09:01:39,473 - INFO - Connection closed successfully
 2026-11-25 09:01:39,473 - INFO - Loaded 1 file(s) into RAKTRADAR.RAW.BLOOD_STOCK.
+2026-11-26 08:46:16,372 - INFO - Loaded master data from cache.
+2026-11-26 08:46:16,372 - INFO - Fetching 781 districts...
+2026-11-26 08:48:02,344 - INFO - Collection complete. Extracted 4758 blood bank records from 781/781 districts to blood_data_20261126_084616.ndjson.gz.
+2026-11-26 08:48:04,917 - INFO - outbound HTTP call method=PUT host=169.254.169.254 path=/latest/api/token
+2026-11-26 08:48:04,919 - INFO - HTTP response status=200
+2026-11-26 08:48:04,919 - INFO - outbound HTTP call method=GET host=169.254.169.254 path=/latest/meta-data/placement/region
+2026-11-26 08:48:04,920 - INFO - HTTP response status=200
+2026-11-26 08:48:04,921 - INFO - outbound HTTP call method=PUT host=169.254.169.254 path=/latest/api/token
+2026-11-26 08:48:04,922 - INFO - HTTP response status=200
+2026-11-26 08:48:04,922 - INFO - outbound HTTP call method=GET host=169.254.169.254 path=/latest/meta-data/iam/security-credentials/
+2026-11-26 08:48:04,923 - INFO - HTTP response status=404
+2026-11-26 08:48:04,923 - WARNING - received 404 from IMDS when loading profile information. Hint: This instance may not have an IAM role associated.
+2026-11-26 08:48:04,928 - WARNING - Proxy configuration: using environment variable proxy settings
+2026-11-26 08:48:04,928 - INFO - Starting Snowflake login process
+2026-11-26 08:48:04,928 - INFO - Making Snowflake login request login_url=https://ZABGYTC-XJ78708.snowflakecomputing.com/session/v1/login-request
+2026-11-26 08:48:04,929 - INFO - outbound HTTP call method=POST path=/session/v1/login-request attempt=1
+2026-11-26 08:48:05,740 - INFO - Snowflake login completed successfully session_id=4447928263827574 session_validity_secs=3599 master_validity_secs=14399 session_params_count=52 server_version=10.42.104
+2026-11-26 08:48:05,825 - INFO - Executing sync query request_id=99fbd8e9-944f-48b7-98e5-8c8d4dd62381
+2026-11-26 08:48:05,825 - INFO - outbound HTTP call method=POST path=/queries/v1/query-request attempt=1
+2026-11-26 08:48:08,981 - WARNING - Proxy configuration: using environment variable proxy settings
+2026-11-26 08:48:08,983 - INFO - outbound HTTP call method=HEAD path=azure-transfer attempt=1
+2026-11-26 08:48:10,152 - INFO - HTTP response status=404
+2026-11-26 08:48:10,152 - INFO - outbound HTTP call method=PUT path=3kuegpsfcb1stg.blob.core.windows.net/stageszze0bb04ae-2f95-45b3-9cf6-529ff84463de/2026/11/26/blood_data_20261126_084616.ndjson.gz attempt=1
+2026-11-26 08:48:11,466 - INFO - HTTP response status=201
+2026-11-26 08:48:11,466 - INFO - PUT blood_data_20261126_084616.ndjson.gz -> @RAKTRADAR.RAW.RAKT_STAGE/2026/11/26/: [('blood_data_20261126_084616.ndjson.gz', 'blood_data_20261126_084616.ndjson.gz', 634289, 634304, 'GZIP', 'GZIP', 'UPLOADED', '')]
+2026-11-26 08:48:11,467 - INFO - Executing sync query request_id=ef21b3fa-79b4-41e6-9ad3-ca26a04fd7a6
+2026-11-26 08:48:11,467 - INFO - outbound HTTP call method=POST path=/queries/v1/query-request attempt=1
+2026-11-26 08:48:15,266 - INFO - COPY result: ('rakt_stage/2026/11/26/blood_data_20261126_084616.ndjson.gz', 'LOADED', 4758, 4758, 1, 0, None, None, None, None)
+2026-11-26 08:48:15,267 - INFO - Closing connection
+2026-11-26 08:48:15,267 - INFO - Sending logout: auto-detection found no running async queries
+2026-11-26 08:48:15,493 - INFO - Initiating session logout
+2026-11-26 08:48:15,493 - INFO - outbound HTTP call method=POST path=/session attempt=1
+2026-11-26 08:48:15,724 - INFO - Session logout completed successfully
+2026-11-26 08:48:15,724 - INFO - Logout completed successfully
+2026-11-26 08:48:15,724 - INFO - Connection closed successfully
+2026-11-26 08:48:15,724 - INFO - Loaded 1 file(s) into RAKTRADAR.RAW.BLOOD_STOCK.
