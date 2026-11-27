@@ -74,3 +74,16 @@ jobs:
           SNOWFLAKE_PRIVATE_KEY: ${{ secrets.SNOWFLAKE_PRIVATE_KEY }}
           DBT_SNOWFLAKE_USER: RAKT_TRANSFORMER_SVC
         run: dbt build --profiles-dir .
+
+      - name: Send shortage alert
+        env:
+          SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
+          SNOWFLAKE_USER: RAKT_TRANSFORMER_SVC
+          SNOWFLAKE_PRIVATE_KEY: ${{ secrets.SNOWFLAKE_PRIVATE_KEY }}
+        run: |
+          python -c "
+          from python.load_to_snowflake import get_connection
+          with get_connection(role='RAKT_TRANSFORMER', schema='ANALYTICS') as conn:
+              res = conn.cursor().execute('CALL RAKTRADAR.ANALYTICS.SEND_SHORTAGE_EMAIL()').fetchone()
+              print(res[0])
+          "

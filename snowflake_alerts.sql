@@ -87,13 +87,12 @@ begin
 end;
 $$;
 
--- 08:00 UTC (13:30 IST): the pipeline is scheduled at 06:00 UTC, but GitHub cron can lag by up to an hour
+-- Watchdog at 12:00 UTC (17:30 IST): shortage emails are sent directly by GitHub Actions
+-- after dbt build; this alert only fires if no data arrived today at all.
 create or replace alert SHORTAGE_ALERT
     warehouse = RAKTRADAR_WH
-    schedule = 'USING CRON 0 8 * * * UTC'
+    schedule = 'USING CRON 0 12 * * * UTC'
     if (exists (
-        select 1 from RAKTRADAR.ANALYTICS.ALERT_CRITICAL_SHORTAGES
-        union all
         select 1
         from (select max(run_id) as latest_run from RAKTRADAR.ANALYTICS.FCT_STOCK_SNAPSHOT)
         where latest_run is null

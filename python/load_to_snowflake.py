@@ -18,7 +18,7 @@ STAGE = "@RAKTRADAR.RAW.RAKT_STAGE"
 TABLE = "RAKTRADAR.RAW.BLOOD_STOCK"
 RUN_ID_PATTERN = re.compile(r"(\d{8})_(\d{6})")
 
-def get_connection():
+def get_connection(role="RAKT_LOADER", schema="RAW"):
     # Private key comes in as a PEM string (GitHub secret), connector wants DER bytes
     pem = os.environ["SNOWFLAKE_PRIVATE_KEY"].encode()
     passphrase = os.environ.get("SNOWFLAKE_PRIVATE_KEY_PASSPHRASE")
@@ -34,10 +34,10 @@ def get_connection():
         account=os.environ["SNOWFLAKE_ACCOUNT"],
         user=os.environ.get("SNOWFLAKE_USER", "RAKT_LOADER_SVC"),
         private_key=der,
-        role="RAKT_LOADER",
+        role=role,
         warehouse="RAKTRADAR_WH",
         database="RAKTRADAR",
-        schema="RAW",
+        schema=schema,
     )
 
 def load_file(cur, path):
